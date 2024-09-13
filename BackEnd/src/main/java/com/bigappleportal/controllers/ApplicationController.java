@@ -3,11 +3,10 @@ package com.bigappleportal.controllers;
 import com.bigappleportal.dto.ApplicationDto;
 import com.bigappleportal.services.ApplicationServices;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/employer/applications")
+@RequestMapping("/api/applications")
 public class ApplicationController {
 
     private final ApplicationServices applicationService;
