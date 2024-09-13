@@ -1,0 +1,114 @@
+[
+  {
+    "id": 1,
+    "username": "john_doe",
+    "password": "password123",
+    "role": "ROLE_EMPLOYEE",
+    "skills": "Java, Spring Boot",
+    "education": "B.Sc. Computer Science",
+    "workExperience": "2 years at TechCorp",
+    "pictureURL": "http://example.com/john.jpg",
+    "resumeURL": "http://example.com/john_resume.pdf"
+  },
+  {
+    "id": 2,
+    "username": "jane_smith",
+    "password": "password123",
+    "role": "ROLE_EMPLOYEE",
+    "skills": "Python, Data Analysis",
+    "education": "B.Sc. Data Science",
+    "workExperience": "1 year at DataWorks",
+    "pictureURL": "http://example.com/jane.jpg",
+    "resumeURL": "http://example.com/jane_resume.pdf"
+  },
+  {
+    "id": 3,
+    "username": "mike_jones",
+    "password": "password123",
+    "role": "ROLE_EMPLOYEE",
+    "skills": "Marketing, SEO",
+    "education": "B.Sc. Marketing",
+    "workExperience": "3 years at MarketGurus",
+    "pictureURL": "http://example.com/mike.jpg",
+    "resumeURL": "http://example.com/mike_resume.pdf"
+  },
+  {
+    "id": 4,
+    "username": "susan_lee",
+    "password": "password123",
+    "role": "ROLE_EMPLOYEE",
+    "skills": "Graphic Design, Photoshop",
+    "education": "B.A. Graphic Design",
+    "workExperience": "2 years at DesignHub",
+    "pictureURL": "http://example.com/susan.jpg",
+    "resumeURL": "http://example.com/susan_resume.pdf"
+  },
+  {
+    "id": 5,
+    "username": "tom_brown",
+    "password": "password123",
+    "role": "ROLE_EMPLOYEE",
+    "skills": "IT Support, Networking",
+    "education": "B.Sc. Information Technology",
+    "workExperience": "1 year at IT Solutions",
+    "pictureURL": "http://example.com/tom.jpg",
+    "resumeURL": "http://example.com/tom_resume.pdf"
+  },
+  {
+    "id": 6,
+    "username": "lisa_white",
+    "password": "password123",
+    "role": "ROLE_EMPLOYEE",
+    "skills": "HR Management, Recruitment",
+    "education": "B.Sc. Human Resources",
+    "workExperience": "2 years at HR Experts",
+    "pictureURL": "http://example.com/lisa.jpg",
+    "resumeURL": "http://example.com/lisa_resume.pdf"
+  },
+  {
+    "id": 7,
+    "username": "david_clark",
+    "password": "password123",
+    "role": "ROLE_EMPLOYEE",
+    "skills": "Financial Analysis, Excel",
+    "education": "B.Sc. Finance",
+    "workExperience": "3 years at FinancePros",
+    "pictureURL": "http://example.com/david.jpg",
+    "resumeURL": "http://example.com/david_resume.pdf"
+  },
+  {
+    "id": 8,
+    "username": "nancy_martin",
+    "password": "password123",
+    "role": "ROLE_EMPLOYEE",
+    "skills": "Content Writing, Blogging",
+    "education": "B.A. English",
+    "workExperience": "1 year at ContentCreators",
+    "pictureURL": "http://example.com/nancy.jpg",
+    "resumeURL": "http://example.com/nancy_resume.pdf"
+  },
+  {
+    "id": 9,
+    "username": "paul_wilson",
+    "password": "password123",
+    "role": "ROLE_EMPLOYEE",
+    "skills": "Sales, CRM",
+    "education": "B.Sc. Business Administration",
+    "workExperience": "2 years at SalesForce",
+    "pictureURL": "http://example.com/paul.jpg",
+    "resumeURL": "http://example.com/paul_resume.pdf"
+  },
+  {
+    "id": 10,
+    "username": "emma_taylor",
+    "password": "password123",
+    "role": "ROLE_EMPLOYEE",
+    "skills": "Customer Service, Communication",
+    "education": "B.A. Communications",
+    "workExperience": "1 year at CustomerFirst",
+    "pictureURL": "http://example.com/emma.jpg",
+    "resumeURL": "http://example.com/emma_resume.pdf"
+  }
+]
+
+

@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "apprenticeship_id": 1,
+    "user_id": 1,
+    "status": "APPLIED"
+  },
+  {
+    "id": 2,
+    "apprenticeship_id": 1,
+    "user_id": 2,
+    "status": "INTERVIEWED"
+  },
+  {
+    "id": 3,
+    "apprenticeship_id": 2,
+    "user_id": 3,
+    "status": "OFFERED"
+  },
+  {
+    "id": 4,
+    "apprenticeship_id": 3,
+    "user_id": 4,
+    "status": "REJECTED"
+  },
+  {
+    "id": 5,
+    "apprenticeship_id": 4,
+    "user_id": 5,
+    "status": "APPLIED"
+  },
+  {
+    "id": 6,
+    "apprenticeship_id": 5,
+    "user_id": 6,
+    "status": "INTERVIEWED"
+  },
+  {
+    "id": 7,
+    "apprenticeship_id": 6,
+    "user_id": 7,
+    "status": "OFFERED"
+  },
+  {
+    "id": 8,
+    "apprenticeship_id": 7,
+    "user_id": 8,
+    "status": "REJECTED"
+  },
+  {
+    "id": 9,
+    "apprenticeship_id": 8,
+    "user_id": 9,
+    "status": "APPLIED"
+  },
+  {
+    "id": 10,
+    "apprenticeship_id": 9,
+    "user_id": 10,
+    "status": "INTERVIEWED"
+  }
+]
+
+
+

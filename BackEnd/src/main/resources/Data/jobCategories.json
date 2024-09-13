@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Software Development"
+  },
+  {
+    "id": 2,
+    "name": "Data Analysis"
+  },
+  {
+    "id": 3,
+    "name": "Marketing"
+  },
+  {
+    "id": 4,
+    "name": "Graphic Design"
+  },
+  {
+    "id": 5,
+    "name": "IT Support"
+  },
+  {
+    "id": 6,
+    "name": "Human Resources"
+  },
+  {
+    "id": 7,
+    "name": "Finance"
+  },
+  {
+    "id": 8,
+    "name": "Content Writing"
+  },
+  {
+    "id": 9,
+    "name": "Sales"
+  },
+  {
+    "id": 10,
+    "name": "Customer Service"
+  }
+]
+
+
