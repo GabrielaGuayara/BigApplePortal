@@ -17,7 +17,6 @@ public class Role {
     private Integer id;
 
     @Column(unique = true)
-    @NotBlank
     private String name;
 
 
