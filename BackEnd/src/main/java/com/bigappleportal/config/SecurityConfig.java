@@ -21,7 +21,6 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/api/apprenticeships/**").permitAll()
-                        // Add other endpoint configurations as needed
                         .anyRequest().authenticated()
                 );
 
