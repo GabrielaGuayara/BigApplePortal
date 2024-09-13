@@ -14,7 +14,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/employer/apprenticeships")
+@RequestMapping("/api/apprenticeships")
+@CrossOrigin(origins = "http://localhost:5173/apprenticeships")
 public class ApprenticeshipController {
 
     @Autowired
@@ -23,7 +24,6 @@ public class ApprenticeshipController {
     @Autowired
     private ApplicationRepository applicationRepository;
 
-
     private final EmailService emailService;
 
     @Autowired
@@ -31,21 +31,17 @@ public class ApprenticeshipController {
         this.emailService = emailService;
     }
 
-
-    // Post a new apprenticeship
     @PostMapping
     public ResponseEntity<?> postApprenticeship(@Valid @RequestBody Apprenticeship apprenticeship) {
         apprenticeshipRepository.save(apprenticeship);
         return ResponseEntity.ok("Apprenticeship posted successfully");
     }
 
-    // View all apprenticeships
     @GetMapping
     public List<Apprenticeship> getAllApprenticeships() {
         return apprenticeshipRepository.findAll();
     }
 
-    // View a specific apprenticeship
     @GetMapping("/{id}")
     public ResponseEntity<?> getApprenticeship(@PathVariable Integer id) {
         Optional<Apprenticeship> apprenticeship = apprenticeshipRepository.findById(id);
@@ -56,7 +52,6 @@ public class ApprenticeshipController {
         }
     }
 
-    // Update an existing apprenticeship
     @PutMapping("/{id}")
     public ResponseEntity<?> updateApprenticeship(@PathVariable Integer id, @Valid @RequestBody Apprenticeship updatedApprenticeship) {
         if (apprenticeshipRepository.existsById(id)) {
@@ -68,7 +63,6 @@ public class ApprenticeshipController {
         }
     }
 
-    // Delete an apprenticeship
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteApprenticeship(@PathVariable Integer id) {
         if (apprenticeshipRepository.existsById(id)) {
@@ -79,7 +73,6 @@ public class ApprenticeshipController {
         }
     }
 
-    // View applicants for a specific apprenticeship
     @GetMapping("/{id}/applications")
     public ResponseEntity<?> getApplicantsForApprenticeship(@PathVariable Integer id) {
         List<Application> applications = applicationRepository.findByApprenticeshipId(id);
@@ -117,6 +110,5 @@ public class ApprenticeshipController {
         }
     }
 }
-
 
 
