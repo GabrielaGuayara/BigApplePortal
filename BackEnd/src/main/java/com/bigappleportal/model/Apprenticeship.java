@@ -1,39 +1,33 @@
-// Apprenticeship.java
 package com.bigappleportal.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.time.LocalDate;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
 @Entity
+@Table(name = "apprenticeships")
 public class Apprenticeship {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    private String title;
-    private String description;
-    private String company;
-    private String location;
-    private boolean isRemote;
+    private String apprenticeshipType;
+    private String salaryRange;
+    private String experienceLevel;
+    private String requiredSkills;
+    private String status; // OPEN, CLOSED, FILLED
+    private LocalDate datePosted;
 
-    @ManyToOne
-    @JoinColumn(name = "job_category_id", referencedColumnName = "id")
-    @JsonIgnore
-    private JobCategory jobCategory;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private ApprenticeshipCategory category;
 
-    @OneToMany(mappedBy = "apprenticeship", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<Application> applications;
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
 }
 

@@ -1,30 +1,31 @@
 package com.bigappleportal.model;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
-import lombok.*;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
+
+@Data
 @Entity
+@Table(name = "applications")
 public class Application {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "apprenticeship_id", referencedColumnName = "id")
-    @JsonIgnore
+    @NotBlank(message = "Status is required")
+    private String status;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user; // Employee
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "apprenticeship_id")
     private Apprenticeship apprenticeship;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    @JsonIgnore
-    private User employee;
-
-    @Enumerated(EnumType.STRING)
-    private ApplicationStatus status;
+    // Getters and Setters
 }
+
 
 
