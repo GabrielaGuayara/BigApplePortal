@@ -1,36 +1,25 @@
 package com.bigappleportal.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
 
-@Setter
-@Getter
-public class ApprenticeshipDto {
+@Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ApprenticeshipDTO {
 
-    @NotBlank
-    @Size(min = 3, max = 100)
-    private String title;
-
-    @NotBlank
-    @Size(min = 10, max = 500)
-    private String description;
-
-    @NotNull
-    private Integer jobCategoryId;
-
-    @NotNull
-    private Boolean isRemote;
-
-    @NotBlank
-    @Size(min = 3, max = 100)
-    private String location;
-
+    private Long id;
+    private String apprenticeshipType;
+    private String salaryRange;
+    private String experienceLevel;
+    private String requiredSkills;
+    private ApprenticeshipCategoryDTO category; // Include category details
+    private String status;
+    private String datePosted;
+    private UserDTO user; // Include employer details
+    private List<ApplicationDTO> applications = new ArrayList<>();
 
 }
 

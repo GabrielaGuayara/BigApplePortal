@@ -1,21 +1,16 @@
 package com.bigappleportal.dto;
 
-import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Data;
 
-@Getter
-@Setter
-public class ApplicationDto {
+@Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ApplicationDTO {
 
-    @NotNull
-    private Integer apprenticeshipId;
-
-    @NotNull
-    private Integer employeeId;
-
+    private Long id;
     private String status;
-
+    private UserDTO user; // Include employee details
+    private ApprenticeshipDTO apprenticeship; // Include apprenticeship details
 
 }
 

@@ -8,19 +8,11 @@ import java.util.List;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class UserDTO {
+public class ApprenticeshipCategoryDTO {
 
     private Long id;
-    private String email;
     private String name;
-    private String phoneNumber;
-    private String role; // "ADMIN", "EMPLOYER", "EMPLOYEE"
-
-    // For employer role
     private List<ApprenticeshipDTO> apprenticeships = new ArrayList<>();
-
-    // For employee role
-    private List<ApplicationDTO> applications = new ArrayList<>();
 
 }
 
