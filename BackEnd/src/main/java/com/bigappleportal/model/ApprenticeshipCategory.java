@@ -18,6 +18,7 @@ public class ApprenticeshipCategory {
 
     @NotBlank(message = "Category name is required")
     private String name;
+    private String description;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Apprenticeship> apprenticeships = new ArrayList<>();

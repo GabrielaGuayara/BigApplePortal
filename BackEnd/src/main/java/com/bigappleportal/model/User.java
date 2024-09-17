@@ -28,16 +28,24 @@ public class User implements UserDetails {
     @NotBlank(message = "Name is required")
     private String name;
 
-    @NotBlank(message = "Phone Number is required")
-    private String phoneNumber;
-
     @NotBlank(message = "Password is required")
     private String password;
 
+    private String phoneNumber;
+
     private String role; // It could be "ADMIN", "EMPLOYER", "EMPLOYEE"
+
+    private String profile;  // Optional field for user profile info
+
+    @OneToMany(mappedBy = "user")
+    private List<Application> applications = new ArrayList<>();  // Employees' applications
+
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Apprenticeship> apprenticeships = new ArrayList<>();
+
+
+
 
     // Implement UserDetails methods
     @Override

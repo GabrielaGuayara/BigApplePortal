@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @Data
 @Entity
 @Table(name = "applications")
@@ -12,6 +15,9 @@ public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+
+    private Date dateApplied;
 
     @NotBlank(message = "Status is required")
     private String status;
@@ -24,7 +30,8 @@ public class Application {
     @JoinColumn(name = "apprenticeship_id")
     private Apprenticeship apprenticeship;
 
-    // Getters and Setters
+
+
 }
 
 
