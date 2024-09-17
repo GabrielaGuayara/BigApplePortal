@@ -2,6 +2,7 @@ package com.bigappleportal.repositories;
 
 
 import com.bigappleportal.model.Apprenticeship;
+import com.bigappleportal.model.ApprenticeshipCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -22,6 +23,10 @@ public interface ApprenticeshipRepository extends JpaRepository<Apprenticeship, 
 
     @Query("SELECT a FROM Apprenticeship a WHERE a.status = 'OPEN' AND a.datePosted >= CURRENT_DATE")
     List<Apprenticeship> findOpenAndRecentApprenticeships();
+
+    List<Apprenticeship> findByCategory(ApprenticeshipCategory category);
+
+//    List<Apprenticeship> searchApprenticeships(String location, String apprenticeshipType, String experienceLevel);
 }
 
 
