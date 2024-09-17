@@ -3,7 +3,9 @@ package com.bigappleportal.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -11,14 +13,17 @@ import java.util.List;
 public class ApprenticeshipDTO {
 
     private Long id;
+    private String title;
+    private String location;
+    private String description;
     private String apprenticeshipType;
     private String salaryRange;
     private String experienceLevel;
     private String requiredSkills;
     private ApprenticeshipCategoryDTO category; // Include category details
     private String status;
-    private String datePosted;
-    private UserDTO user; // Include employer details
+    private Date datePosted;
+    private UserDTO user;
     private List<ApplicationDTO> applications = new ArrayList<>();
 
 }

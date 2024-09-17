@@ -15,9 +15,9 @@ public class UserDTO {
     private String name;
     private String phoneNumber;
     private String role; // "ADMIN", "EMPLOYER", "EMPLOYEE"
-
-    // For employer role
-    private List<ApprenticeshipDTO> apprenticeships = new ArrayList<>();
+    private String profile;
+//    // For employer role
+//    private List<ApprenticeshipDTO> apprenticeships = new ArrayList<>();
 
     // For employee role
     private List<ApplicationDTO> applications = new ArrayList<>();

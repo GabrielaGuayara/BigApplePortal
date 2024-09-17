@@ -12,7 +12,9 @@ public class ApprenticeshipCategoryDTO {
 
     private Long id;
     private String name;
-    private List<ApprenticeshipDTO> apprenticeships = new ArrayList<>();
+    private String description;
+
+//    private List<ApprenticeshipDTO> apprenticeships = new ArrayList<>();
 
 }
 
