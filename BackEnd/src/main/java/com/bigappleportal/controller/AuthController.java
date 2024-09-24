@@ -33,7 +33,7 @@ public class AuthController {
 
 
     // Public method to get all available apprenticeships
-    @GetMapping("/all-apprenticeship")
+    @GetMapping("/public/all-apprenticeship")
     public ResponseEntity<Response> getAllApprenticeships() {
         try {
             Response response = apprenticeshipService.getAllApprenticeships();
