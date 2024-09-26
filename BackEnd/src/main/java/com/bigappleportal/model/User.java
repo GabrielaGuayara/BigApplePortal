@@ -35,13 +35,14 @@ public class User implements UserDetails {
 
     private String role; // It could be "ADMIN", "EMPLOYER", "EMPLOYEE"
 
-    private String profile;  // Optional field for user profile info
+    private String summary;
 
-    @OneToMany(mappedBy = "user")
-    private List<Application> applications = new ArrayList<>();  // Employees' applications
+    // Employees' applications
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Application> applications = new ArrayList<>();
 
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Apprenticeship> apprenticeships = new ArrayList<>();
 
 
@@ -81,6 +82,3 @@ public class User implements UserDetails {
 
     // Getters and Setters
 }
-
-
-

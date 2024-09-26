@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class Apprenticeship {
     private Long id;
 
     private String title;
+    private String company;
     private String location;
     private String description;
     private String apprenticeshipType;
@@ -26,11 +28,9 @@ public class Apprenticeship {
     private String status; // OPEN, CLOSED, FILLED
     private Date datePosted;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
-    private ApprenticeshipCategory category;
 
-    @OneToMany(mappedBy = "apprenticeship") private List<Application> applications;
+    @OneToMany(mappedBy = "apprenticeship", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Application> applications = new ArrayList<>();
 
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -38,6 +38,3 @@ public class Apprenticeship {
     private User user;
 
 }
-
-
-

@@ -26,6 +26,7 @@ public class Application {
     @JoinColumn(name = "user_id")
     private User user; // Employee
 
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "apprenticeship_id")
     private Apprenticeship apprenticeship;
@@ -33,6 +34,3 @@ public class Application {
 
 
 }
-
-
-
