@@ -27,6 +27,3 @@ public interface ApplicationRepository extends JpaRepository<Application, Long> 
     List<Application> findByApprenticeshipId(Long apprenticeshipId);
 
 }
-
-
-

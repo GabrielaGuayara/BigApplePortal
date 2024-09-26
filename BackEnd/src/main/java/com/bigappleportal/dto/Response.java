@@ -1,5 +1,6 @@
 package com.bigappleportal.dto;
 
+import com.bigappleportal.model.Application;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
@@ -9,25 +10,22 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Response {
 
-        private int statusCode;
-        private String message;
+    private int statusCode;
+    private String message;
 
-        private String token;
-        private String role;
-        private String expirationTime;
-        private String bookingConfirmationCode;
+    private String token;
+    private String role;
+    private String expirationTime;
+    private Long id;
+    private String name;
 
-        private UserDTO user;
-        private ApprenticeshipDTO apprenticeship;
-        private ApplicationDTO application;
-        private ApprenticeshipCategoryDTO category;
+    private UserDTO user;
+    private ApprenticeshipDTO apprenticeship;
+    private ApplicationDTO application;
 
-        private List<UserDTO> userList;
-        private List<ApprenticeshipDTO> apprenticeshipList;
-        private List<ApplicationDTO> applicationList;
-        private List<ApprenticeshipCategoryDTO> categoryList;
-
-    }
+    private List<UserDTO> userList;
+    private List<ApprenticeshipDTO> apprenticeships;
+    private List<ApplicationDTO> applications;
 
 
-
+}

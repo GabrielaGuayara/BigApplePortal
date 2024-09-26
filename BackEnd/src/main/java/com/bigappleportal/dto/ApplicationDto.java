@@ -17,6 +17,3 @@ public class ApplicationDTO {
 //    private Long apprenticeshipId;
 
 }
-
-
-
