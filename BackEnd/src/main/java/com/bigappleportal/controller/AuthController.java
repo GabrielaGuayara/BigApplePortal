@@ -7,6 +7,7 @@ import com.bigappleportal.services.interfaces.IApprenticeshipService;
 import com.bigappleportal.services.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -31,9 +32,8 @@ public class AuthController {
 
     }
 
-
-    // Public method to get all available apprenticeships
-    @GetMapping("/public/all-apprenticeship")
+    // This method allows all users access  available apprenticeships
+    @GetMapping("/all-apprenticeships")
     public ResponseEntity<Response> getAllApprenticeships() {
         try {
             Response response = apprenticeshipService.getAllApprenticeships();
@@ -45,20 +45,5 @@ public class AuthController {
             return ResponseEntity.status(500).body(response);
         }
     }
-
-    // Public method to get apprenticeship by id
-    @GetMapping("/apprenticeship-by-id/{id}")
-    public ResponseEntity<Response> getApprenticeshipById(@PathVariable Long id) {
-        try {
-            Response response = apprenticeshipService.getApprenticeshipById(id);
-            return ResponseEntity.ok(response);
-        } catch (Exception e) {
-            Response response = new Response();
-            response.setStatusCode(500);
-            response.setMessage("Error occurred while fetching apprenticeship: " + e.getMessage());
-            return ResponseEntity.status(500).body(response);
-        }
-    }
-
 
 }

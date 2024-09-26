@@ -1,7 +1,9 @@
 package com.bigappleportal.controller;
 
+import com.bigappleportal.dto.AdminRequest;
 import com.bigappleportal.dto.LoginRequest;
 import com.bigappleportal.dto.Response;
+import com.bigappleportal.dto.UserUpdatedRequest;
 import com.bigappleportal.model.User;
 
 import com.bigappleportal.services.interfaces.IUserService;
@@ -33,8 +35,29 @@ public class UserController {
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 
+    // Update user profile
+    @PutMapping("/update/{userId}")
+    @PreAuthorize("hasAuthority('EMPLOYEE')")
+    public ResponseEntity<Response> updateUserProfile(
+            @PathVariable Long userId,
+            @RequestBody UserUpdatedRequest userUpdateRequest) {
+        Response response = userService.updateUser(userId, userUpdateRequest);
+        return ResponseEntity.status(response.getStatusCode()).body(response);
+    }
 
 
+//    @PostMapping("/add-admin")
+//    @PreAuthorize("hasAuthority('ADMIN')")
+//    public ResponseEntity<Response> addAdmin(@RequestBody AdminRequest adminRequest) {
+//        try {
+//            Response response = userService.addAdmin(adminRequest);
+//            return ResponseEntity.status(response.getStatusCode()).body(response);
+//        } catch (Exception e) {
+//            Response response = new Response();
+//            response.setStatusCode(500);
+//            response.setMessage("Error occurred while adding admin: " + e.getMessage());
+//            return ResponseEntity.status(500).body(response);
+//        }
 
 //    @GetMapping("/personalInfo")
 //    public ResponseEntity<Response> getMyInfo(@RequestParam String email) {
@@ -56,6 +79,20 @@ public class UserController {
     public ResponseEntity<Response> deleteUSer(@PathVariable("id") String userId) {
         Response response = userService.deleteUser(userId);
         return ResponseEntity.status(response.getStatusCode()).body(response);
+    }
+
+    @PostMapping("/add-admin")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ResponseEntity<Response> addAdmin(@RequestBody AdminRequest adminRequest) {
+        try {
+            Response response = userService.addAdmin(adminRequest);
+            return ResponseEntity.status(response.getStatusCode()).body(response);
+        } catch (Exception e) {
+            Response response = new Response();
+            response.setStatusCode(500);
+            response.setMessage("Error occurred while adding admin: " + e.getMessage());
+            return ResponseEntity.status(500).body(response);
+        }
     }
 
 }

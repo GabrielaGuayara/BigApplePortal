@@ -16,7 +16,7 @@ public class ApplicationController {
     private IApplicationService applicationService;
 
     @PostMapping("/apply/{userId}/{apprenticeshipId}")
-    @PreAuthorize("hasAuthority('Employee')")
+    @PreAuthorize("hasAuthority('EMPLOYEE')")
     public ResponseEntity<Response> applyForApprenticeship(
             @PathVariable Long userId,
             @PathVariable Long apprenticeshipId) {
@@ -49,6 +49,19 @@ public class ApplicationController {
         Response response = applicationService.deleteApplication(applicationId, userId);
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
+
+
+    // Update the status of an application
+    @PutMapping("/{applicationId}/status")
+    public ResponseEntity<Response> updateStatus(
+            @PathVariable Long applicationId,
+            @RequestBody String newStatus) {
+        Response response = applicationService.updateApplicationStatus(applicationId, newStatus);
+        return ResponseEntity.status(response.getStatusCode()).body(response);
+    }
+
+
+
 }
 
 

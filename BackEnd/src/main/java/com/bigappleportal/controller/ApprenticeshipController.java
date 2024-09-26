@@ -32,6 +32,23 @@ public class ApprenticeshipController {
 
 
 
+    // Public method to get apprenticeship by id
+    @GetMapping("/apprenticeship-by-id/{id}")
+    @PreAuthorize("hasAuthority('EMPLOYEE', 'EMPLOYER')")
+
+    public ResponseEntity<Response> getApprenticeshipById(@PathVariable Long id) {
+        try {
+            Response response = apprenticeshipService.getApprenticeshipById(id);
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            Response response = new Response();
+            response.setStatusCode(500);
+            response.setMessage("Error occurred while fetching apprenticeship: " + e.getMessage());
+            return ResponseEntity.status(500).body(response);
+        }
+    }
+
+
     // Create a new apprenticeship
     @PostMapping("/post-apprenticeship/{userId}")
     @PreAuthorize("hasAnyAuthority('EMPLOYER')")
