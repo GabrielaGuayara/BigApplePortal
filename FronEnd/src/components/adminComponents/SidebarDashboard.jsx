@@ -1,30 +1,36 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Plus, LogOut } from 'lucide-react';
 
-const SidebarDashboard = () => {
+export default function SidebarDashboard({ setActiveComponent, activeComponent }) {
+  const menuItems = [
+    { name: 'Dashboard', component: 'default' },
+    { name: 'Add New Admin', component: 'addAdmin' },
+    { name: 'View All Users', component: 'viewUsers' },
+  ];
+
   return (
-    <div className="flex flex-col w-64 p-4 text-white bg-[#758694] h-screen shadow-md border-r border-gray-200">
-      <h1 className="text-2xl font-extrabold mb-6">Welcome</h1>
-      <nav className="flex flex-col flex-grow">
-        <Link to="/new-category" className="flex items-center my-2 p-2 rounded-lg hover:bg-[#5b6d7e] transition duration-300 ease-in-out">
-          <Plus className='h-5 w-5 mr-2' /> New Category
-        </Link>
-        <Link to="/view-employers" className="flex items-center my-2 p-2 rounded-lg hover:bg-[#5b6d7e] transition duration-300 ease-in-out">
-          View All Employers
-        </Link>
-        <Link to="/view-employees" className="flex items-center my-2 p-2 rounded-lg hover:bg-[#5b6d7e] transition duration-300 ease-in-out">
-          View All Employees
-        </Link>
-      </nav>
-      <button className="mt-auto flex items-center my-2 p-2 rounded-lg text-red-300 hover:bg-[#5b6d7e] transition duration-300 ease-in-out">
-        <LogOut className='h-5 w-5 mr-2' /> Log out
-      </button>
+    <div className="w-full md:w-64 bg-blue-600 text-white">
+      <h2 className="text-2xl font-bold p-6 bg-blue-700 cursor-pointer hover:bg-blue-800 transition-colors duration-200"
+        onClick={() => setActiveComponent('default')}
+      >
+        Admin Dashboard
+      </h2>
+      <ul className="space-y-2 p-4">
+        {menuItems.map((item) => (
+          <li key={item.component}>
+            <button
+              onClick={() => setActiveComponent(item.component)}
+              className={`w-full text-left p-3 rounded-lg transition-colors duration-200 ${
+                activeComponent === item.component
+                  ? 'bg-yellow-500 text-blue-900 font-semibold'
+                  : 'hover:bg-blue-500'
+              }`}
+            >
+              {item.name}
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
-};
-
-export default SidebarDashboard;
-
-
+}
 
