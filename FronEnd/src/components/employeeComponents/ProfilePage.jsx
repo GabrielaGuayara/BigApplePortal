@@ -1,12 +1,14 @@
 import { DevicePhoneMobileIcon, ExclamationCircleIcon, PencilIcon, PhoneArrowDownLeftIcon, UserIcon } from '@heroicons/react/20/solid';
 import { Inbox, Phone } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function UserProfile() {
+export default function ProfilePage() {
   const [profile, setProfile] = useState(null);
   const [applications, setApplications] = useState([]);
   const userId = localStorage.getItem("id");
   const name = localStorage.getItem('name');
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -62,9 +64,12 @@ export default function UserProfile() {
     } catch (error) {
       alert('An error occurred. Please try again.');
     }
+
   };
 
-
+  const handleUserProfileEdit = () =>{
+    navigate(`/employee/edit-profile/${userId}`)
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 py-8 px-4 sm:px-6 lg:px-8">
@@ -105,7 +110,9 @@ export default function UserProfile() {
                   <div className="bg-gray-50 rounded-lg p-6 shadow-md flex flex-col my-3">
                     <div className='flex'>
                     Click on edit profile and add a summary  
-                    <button className='btn bg-red-700 rounded ml-5 w-8'> Edit
+                    <button className='btn bg-red-700 rounded ml-5 w-8'
+                    onClick={ handleUserProfileEdit}
+                    > Edit
                     <PencilIcon className='w-5 text-white '/>
                     </button>
                     </div>
