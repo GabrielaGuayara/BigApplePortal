@@ -6,11 +6,17 @@ import com.bigappleportal.model.Apprenticeship;
 
 public interface IApprenticeshipService {
 
-    Response createApprenticeship(Long userId, Long categoryId, ApprenticeshipDTO apprenticeshipDTO);
+    Response createApprenticeship(Long userId , ApprenticeshipDTO apprenticeshipDTO);
 
-    Response updateApprenticeship(Long userId, Long categoryId, Long apprenticeshipId, ApprenticeshipDTO apprenticeshipDTO);
+    Response updateApprenticeship(Long userId, Long apprenticeshipId, ApprenticeshipDTO apprenticeshipDTO);
 
     Response deleteApprenticeship(Long apprenticeshipId, Long userId);
+
+    Response getAllApprenticeshipsByUserId(Long userId);
+
+    Response getApprenticeshipById(Long id);
+
+    Response getAllApprenticeships();
 
 
 
@@ -20,14 +26,10 @@ public interface IApprenticeshipService {
 
 //    Response getAllApprenticeships();
 
-//
-    Response getAllApprenticeships();
-//
-    Response getApprenticeshipById(Long id);
+    //
+
+    //
 
 //    Response searchApprenticeships(String location, String apprenticeshipType, String experienceLevel);
 
 }
-
-
-

@@ -1,8 +1,7 @@
+
 package com.bigappleportal.services.Impl;
 
-import com.bigappleportal.dto.LoginRequest;
-import com.bigappleportal.dto.Response;
-import com.bigappleportal.dto.UserDTO;
+import com.bigappleportal.dto.*;
 import com.bigappleportal.exceptions.OurException;
 import com.bigappleportal.model.User;
 import com.bigappleportal.repositories.UserRepository;
@@ -69,6 +68,9 @@ public class UserServiceImpl implements IUserService {
             response.setRole(user.getRole());
             response.setExpirationTime("7 Days");
             response.setMessage("Successful");
+            response.setId(user.getId());
+            response.setName(user.getName());
+
         } catch (OurException e) {
             response.setStatusCode(404);
             response.setMessage(e.getMessage());
@@ -91,6 +93,78 @@ public class UserServiceImpl implements IUserService {
         } catch (Exception e) {
             response.setStatusCode(500);
             response.setMessage("Error getting all users " + e.getMessage());
+        }
+        return response;
+    }
+
+    @Override
+    public Response addAdmin(AdminRequest adminRequest) {
+        Response response = new Response();
+        try {
+            // Validate the input
+            if (adminRequest.getName() == null || adminRequest.getName().isBlank()) {
+                throw new OurException("Username cannot be empty");
+            }
+            if (adminRequest.getEmail() == null || adminRequest.getEmail().isBlank()) {
+                throw new OurException("Email cannot be empty");
+            }
+            if (adminRequest.getPassword() == null || adminRequest.getPassword().isBlank()) {
+                throw new OurException("Password cannot be empty");
+            }
+
+            // Check if the email already exists
+            if (userRepository.existsByEmail(adminRequest.getEmail())) {
+                throw new OurException(adminRequest.getEmail() + " already exists");
+            }
+
+            // Create new User entity
+            User adminUser = new User();
+            adminUser.setName(adminRequest.getName());
+            adminUser.setEmail(adminRequest.getEmail());
+            adminUser.setPassword(passwordEncoder.encode(adminRequest.getPassword()));
+            adminUser.setRole("ADMIN");  // Set the role to ADMIN
+
+            // Save the user
+            User savedUser = userRepository.save(adminUser);
+            UserDTO userDTO = Utils.mapUserEntityToUserDTO(savedUser);
+            response.setStatusCode(200);
+            response.setUser(userDTO);
+        } catch (OurException e) {
+            response.setStatusCode(400);
+            response.setMessage(e.getMessage());
+        } catch (Exception e) {
+            response.setStatusCode(500);
+            response.setMessage("Error occurred during admin registration: " + e.getMessage());
+        }
+        return response;
+    }
+
+
+    @Override
+    public Response updateUser(Long userId, UserUpdatedRequest userUpdateRequest) {
+        Response response = new Response();
+        try {
+            User user = userRepository.findById(userId)
+                    .orElseThrow(() -> new OurException("User not found"));
+
+            // Update user details
+            user.setName(userUpdateRequest.getName());
+            user.setEmail(userUpdateRequest.getEmail());
+            user.setPhoneNumber(userUpdateRequest.getPhoneNumber());
+            user.setSummary(userUpdateRequest.getSummary());
+
+            User updatedUser = userRepository.save(user);
+            UserDTO userDTO = Utils.mapUserEntityToUserDTO(updatedUser);
+
+            response.setStatusCode(200);
+            response.setUser(userDTO);
+            response.setMessage("User profile updated successfully");
+        } catch (OurException e) {
+            response.setStatusCode(404);
+            response.setMessage(e.getMessage());
+        } catch (Exception e) {
+            response.setStatusCode(500);
+            response.setMessage("Error occurred while updating user profile: " + e.getMessage());
         }
         return response;
     }
@@ -170,7 +244,3 @@ public class UserServiceImpl implements IUserService {
         return response;
     }
 }
-
-
-
-

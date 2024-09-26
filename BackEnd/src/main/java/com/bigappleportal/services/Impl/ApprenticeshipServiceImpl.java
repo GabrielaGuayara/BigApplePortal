@@ -1,12 +1,11 @@
 package com.bigappleportal.services.Impl;
 
+import com.amazonaws.services.kms.model.NotFoundException;
 import com.bigappleportal.dto.ApprenticeshipDTO;
 import com.bigappleportal.dto.Response;
 import com.bigappleportal.exceptions.OurException;
 import com.bigappleportal.model.Apprenticeship;
-import com.bigappleportal.model.ApprenticeshipCategory;
 import com.bigappleportal.model.User;
-import com.bigappleportal.repositories.ApprenticeshipCategoryRepository;
 import com.bigappleportal.repositories.ApprenticeshipRepository;
 import com.bigappleportal.repositories.UserRepository;
 import com.bigappleportal.services.interfaces.IApprenticeshipService;
@@ -15,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ApprenticeshipServiceImpl implements IApprenticeshipService {
@@ -26,8 +26,7 @@ public class ApprenticeshipServiceImpl implements IApprenticeshipService {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private ApprenticeshipCategoryRepository apprenticeshipCategoryRepository;
+
 
 //    @Override
 //    public Response createApprenticeship(Apprenticeship apprenticeship) {
@@ -44,7 +43,7 @@ public class ApprenticeshipServiceImpl implements IApprenticeshipService {
 //        }
 //        return response;
 //    }
-//
+
 //    @Override
 //    public Response updateApprenticeship(Apprenticeship apprenticeship) {
 //        Response response = new Response();
@@ -132,7 +131,7 @@ public class ApprenticeshipServiceImpl implements IApprenticeshipService {
             List<ApprenticeshipDTO> apprenticeshipDTOs = Utils.mapApprenticeshipListEntityToApprenticeshipListDTO(apprenticeships);
             response.setStatusCode(200);
             response.setMessage("Success");
-            response.setApprenticeshipList(apprenticeshipDTOs);
+            response.setApprenticeships(apprenticeshipDTOs);
         } catch (Exception e) {
             response.setStatusCode(500);
             response.setMessage("Error fetching apprenticeships: " + e.getMessage());
@@ -185,7 +184,7 @@ public class ApprenticeshipServiceImpl implements IApprenticeshipService {
 //        try {
 //            Apprenticeship apprenticeship = apprenticeshipRepository.findById(id)
 //                    .orElseThrow(() -> new NotFoundException("Apprenticeship not found"));
-//            ApprenticeshipDTO apprenticeshipDTO = Utils.mapApprenticeshipEntityToDTO(apprenticeship);
+//            ApprenticeshipDTO apprenticeshipDTO = Utils.mapApprenticeshipEntityToApprenticeshipDTO(apprenticeship);
 //            response.setStatusCode(200);
 //            response.setMessage("Successfully fetched apprenticeship.");
 //            response.setApprenticeship(apprenticeshipDTO);
@@ -198,50 +197,46 @@ public class ApprenticeshipServiceImpl implements IApprenticeshipService {
 //        }
 //        return response;
 //    }
+//
+@Override
+public Response createApprenticeship(Long userId, ApprenticeshipDTO apprenticeshipDTO) {
+    Response response = new Response();
+    try {
+        // Fetch the user
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new OurException("User not found"));
 
-    @Override
-    public Response createApprenticeship(Long userId, Long categoryId, ApprenticeshipDTO apprenticeshipDTO) {
-        Response response = new Response();
-        try {
-            // Fetch the user and category
-            User user = userRepository.findById(userId)
-                    .orElseThrow(() -> new OurException("User not found"));
-            ApprenticeshipCategory category = apprenticeshipCategoryRepository.findById(categoryId)
-                    .orElseThrow(() -> new OurException("Apprenticeship category not found"));
+        // Create and save the apprenticeship
+        Apprenticeship apprenticeship = Utils.mapApprenticeshipDTOToApprenticeshipEntity(apprenticeshipDTO);
+        apprenticeship.setUser(user);
+        Apprenticeship savedApprenticeship = apprenticeshipRepository.save(apprenticeship);
 
-            // Create and save the apprenticeship
-            Apprenticeship apprenticeship = Utils.mapApprenticeshipDTOToApprenticeshipEntity(apprenticeshipDTO);
-            apprenticeship.setUser(user);
-            apprenticeship.setCategory(category);
-            Apprenticeship savedApprenticeship = apprenticeshipRepository.save(apprenticeship);
-
-            ApprenticeshipDTO savedApprenticeshipDTO = Utils.mapApprenticeshipEntityToApprenticeshipDTO(savedApprenticeship);
-            response.setStatusCode(201);
-            response.setMessage("Apprenticeship created successfully.");
-            response.setApprenticeship(savedApprenticeshipDTO);
-        } catch (OurException e) {
-            response.setStatusCode(404);
-            response.setMessage(e.getMessage());
-        } catch (Exception e) {
-            response.setStatusCode(500);
-            response.setMessage("Error occurred while creating the apprenticeship: " + e.getMessage());
-        }
-        return response;
+        ApprenticeshipDTO savedApprenticeshipDTO = Utils.mapApprenticeshipEntityToApprenticeshipDTO(savedApprenticeship);
+        response.setStatusCode(201);
+        response.setMessage("Apprenticeship created successfully.");
+        response.setApprenticeship(savedApprenticeshipDTO);
+    } catch (OurException e) {
+        response.setStatusCode(404);
+        response.setMessage(e.getMessage());
+    } catch (Exception e) {
+        response.setStatusCode(500);
+        response.setMessage("Error occurred while creating the apprenticeship: " + e.getMessage());
     }
+    return response;
+}
 
     @Override
-    public Response updateApprenticeship(Long userId, Long categoryId, Long apprenticeshipId, ApprenticeshipDTO apprenticeshipDTO) {
+    public Response updateApprenticeship(Long userId, Long apprenticeshipId, ApprenticeshipDTO apprenticeshipDTO) {
         Response response = new Response();
         try {
-            // Fetch the apprenticeship, user, and category
+            // Fetch the apprenticeship and user
             Apprenticeship apprenticeship = apprenticeshipRepository.findById(apprenticeshipId)
                     .orElseThrow(() -> new OurException("Apprenticeship not found"));
             User user = userRepository.findById(userId)
                     .orElseThrow(() -> new OurException("User not found"));
-            ApprenticeshipCategory category = apprenticeshipCategoryRepository.findById(categoryId)
-                    .orElseThrow(() -> new OurException("Apprenticeship category not found"));
 
             // Update apprenticeship details
+            apprenticeship.setCompany(apprenticeship.getCompany());
             apprenticeship.setTitle(apprenticeshipDTO.getTitle());
             apprenticeship.setLocation(apprenticeshipDTO.getLocation());
             apprenticeship.setDescription(apprenticeshipDTO.getDescription());
@@ -249,7 +244,6 @@ public class ApprenticeshipServiceImpl implements IApprenticeshipService {
             apprenticeship.setSalaryRange(apprenticeshipDTO.getSalaryRange());
             apprenticeship.setExperienceLevel(apprenticeshipDTO.getExperienceLevel());
             apprenticeship.setRequiredSkills(apprenticeshipDTO.getRequiredSkills());
-            apprenticeship.setCategory(category);
             apprenticeship.setUser(user);
 
             Apprenticeship updatedApprenticeship = apprenticeshipRepository.save(apprenticeship);
@@ -267,6 +261,8 @@ public class ApprenticeshipServiceImpl implements IApprenticeshipService {
         }
         return response;
     }
+
+
 
     @Override
     public Response deleteApprenticeship(Long apprenticeshipId, Long userId) {
@@ -304,12 +300,30 @@ public class ApprenticeshipServiceImpl implements IApprenticeshipService {
 //        }
 //        return response;
 //    }
+@Override
+public Response getAllApprenticeshipsByUserId(Long userId) {
+    Response response = new Response();
+    try {
+        List<Apprenticeship> apprenticeships = apprenticeshipRepository.findByUserId(userId);
+        List<ApprenticeshipDTO> apprenticeshipDTOs = apprenticeships.stream()
+                .map(Utils::mapApprenticeshipEntityToApprenticeshipDTO)
+                .collect(Collectors.toList());
+
+        response.setStatusCode(200);
+        response.setMessage("Apprenticeships fetched successfully.");
+        response.setApprenticeships(apprenticeshipDTOs); // This line should work now
+    } catch (Exception e) {
+        response.setStatusCode(500);
+        response.setMessage("Error occurred while fetching apprenticeships: " + e.getMessage());
+    }
+    return response;
+}
+
+
+
 
 
 
 
 
 }
-
-
-
