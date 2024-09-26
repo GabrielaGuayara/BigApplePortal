@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import salaries from '../data/salaries.js'
-import { CurrencyDollarIcon, MagnifyingGlassCircleIcon } from '@heroicons/react/20/solid';
+import { BuildingOffice2Icon, CurrencyDollarIcon, MagnifyingGlassCircleIcon } from '@heroicons/react/20/solid';
+import { LocateIcon, LocateOffIcon, MapIcon, MapPin } from 'lucide-react';
 
 console.log(salaries)
 const FindSalaries = () => {
@@ -37,17 +38,19 @@ const FindSalaries = () => {
           }
         }).map((salary) =>{
           return (
-        <>
-        <div className="p-6 border border-sky-300 rounded-md shadow-sm hover:shadow-lg transition-shadow duration-300 bg-white m-5 w-60">
-          
-          <h2 className="text-2xl font-semibold ">{salary.title}</h2>
-          
-            <p className="text-gray-700">{salary.description}</p>
-            <p className="text-gray-700">Company: {salary.company}</p>
-            <p className="text-gray-700">Location: {salary.location}</p>
-            <p  className="text-xl font-semibold flex">
-              <spa><CurrencyDollarIcon className='w-8'/></spa>{salary.salary}
-            </p>
+            <>
+            <div className="p-3  rounded-md shadow-sm hover:shadow-lg transition-shadow duration-300 border-2  m-5 w-60 text-md leading-5 text-center" >   
+              <h2 className="text-xl font-semibold mb-4  text-blue-700 ">{salary.title}</h2>
+              <div className='flex mb-2  text-center'>
+              <BuildingOffice2Icon className='w-8 mr-3 text-yellow-500'/> {salary.company}
+              </div>
+              <div className='flex mb-2 items-center '>
+              <MapPin className='mr-3 text-yellow-500'/> {salary.location}
+              </div>
+              <div className='flex mb-2 items-center '>
+            <CurrencyDollarIcon className='w-8 text-yellow-500 mr-3'/>{salary.salary}
+           </div>
+           
         </div>  
         </>
 

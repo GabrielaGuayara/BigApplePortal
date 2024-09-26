@@ -8,32 +8,25 @@ function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  const location = useLocation();
+ 
 
-
-  const from = location.state?.from?.pathname || '/home';
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-
-    if (!email || !password) {
-      setError('Please fill in all fields.');
-      setTimeout(() => setError(''), 5000);
-      return;
-    }
-
-
     try {
       const response = await ApiService.loginUser({ email, password });
       if (response.statusCode === 200) {
+        
         localStorage.setItem('token', response.token);
         localStorage.setItem('role', response.role);
-        navigate(from, { replace: true });
+        localStorage.setItem('id', response.id)
+        localStorage.setItem('name', response.name)
+        navigate("/home");
       }
     } catch (error) {
-      setError(error.response?.data?.message || error.message);
+      setError(error.message);
       setTimeout(() => setError(''), 5000);
     }
   };
@@ -89,8 +82,3 @@ function Login() {
 
 
 export default Login;
-
-
-
-
-
