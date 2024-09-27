@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BadgeDollarSign, TrendingUp, User } from 'lucide-react'
-
+import CarouselImage3 from "../images/CarouselImage3.jpg"
 import InfoSection from '../components/EmployerComponents/InfoSection';
 
 const Home = () => {
@@ -8,7 +8,10 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
-      <header className="text-[#24282C] bg-[url('./assets/jobs.jpg')] bg-no-repeat bg-cover bg-top bg-fixed h-screen flex flex-start">
+      <header className="text-[#24282C] bg-no-repeat bg-cover bg-top bg-fixed h-screen flex flex-start"
+       style={{backgroundImage: `url(${CarouselImage3})`,}}
+      
+      >
         <div className='bg-slate-50 w-fit p-2 bg-opacity-50 rounded-xl text-center m-auto'>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-black">Welcome to The Big Apple Apprentice Portal</h1>
           <p className="text-xl mb-8">Kickstart your career with hands-on learning opportunities</p>
