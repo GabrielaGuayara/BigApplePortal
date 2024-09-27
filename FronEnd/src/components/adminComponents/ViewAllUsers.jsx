@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ApiService from '../../Service/ApiService'; 
+import { DeleteIcon } from 'lucide-react';
 
 const ViewAllUsers = () => {
     const [users, setUsers] = useState([]);
@@ -55,7 +56,7 @@ const ViewAllUsers = () => {
                 </select>
             </div>
 
-            <table className="min-w-full border-collapse border border-gray-400">
+            <table className="min-w-full border-collapse border border-gray-400 bg-gray-100 text-center p-6">
                 <thead>
                     <tr>
                         <th className="border border-gray-300 px-4 py-2">ID</th>
@@ -69,16 +70,16 @@ const ViewAllUsers = () => {
                     <p>No users found</p>
                     :(
                     filteredUsers.map((user) => (
-                        <tr key={user.id}>
+                        <tr key={user.id} >
                             <td className="border border-gray-300 px-4 py-2">{user.id}</td>
                             <td className="border border-gray-300 px-4 py-2">{user.email}</td>
                             <td className="border border-gray-300 px-4 py-2">{user.role}</td>
-                            <td>
+                            <td className='border border-gray-300 flex  justify-center'>
                             <button
                                 onClick={() => handleDelete(user.id)}
-                                className="text-red-500 hover:underline m-4"
+                                className="text-white hover:underline m-4 btn bg-red-500 border border-gray-300 px-4 py-2 rounded flex  "
                             >
-                                Delete
+                               Delete<DeleteIcon className='ml-3'/> 
                             </button>
 
                             </td>

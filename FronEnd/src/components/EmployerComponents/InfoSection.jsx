@@ -1,6 +1,6 @@
 import React from 'react'
-import employeePic from "../../assets/employee.jpg"
-import employerPic from "../../assets/employer.jpg"
+import employeePic from "../../images/employee.jpg"
+import employerPic from "../../images/employer.jpg"
 import {Link} from "react-router-dom"
 
 const InfoSection = () => {

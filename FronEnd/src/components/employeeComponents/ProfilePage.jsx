@@ -34,6 +34,7 @@ export default function ProfilePage() {
         },
       });
       const data = await response.json();
+      console.log(data)
       setApplications(data.applications);
     };
 
@@ -45,7 +46,7 @@ export default function ProfilePage() {
     const applicationData = { status: newStatus };
     
     try {
-      const response = await fetch(`http://localhost:8080/applications/update/${userId}/${applicationId}`, {
+      const response = await fetch(`http://localhost:8080/applications/update/${applicationId}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -55,9 +56,8 @@ export default function ProfilePage() {
       });
 
       if (response.ok) {
-        setApplications(applications.map(app =>
-          app.id === applicationId ? { ...app, status: newStatus } : app
-        ));
+        setApplications(applications.status)
+      
       } else {
         alert('Failed to update application status. Please try again.');
       }
@@ -137,9 +137,11 @@ export default function ProfilePage() {
                     <p className="text-gray-600 mb-2">Date Applied: {new Date(application.dateApplied).toLocaleDateString()}</p>
                     <div className="flex items-center justify-between">
                       <p className="text-gray-600">
-                        Status: <span className={`font-semibold ${application.status === 'Accepted' ? 'text-green-600' : application.status === 'Rejected' ? 'text-red-600' : 'text-yellow-600'}`}>{application.status}</span>
+                        {console.log(application.applicationStatus)}
+                        Status: <span className={`font-semibold ${application.applicationStatus
+ === 'Accepted' ? 'text-green-600' : application.applicationStatus === 'rejected' ? 'text-red-600' : 'text-yellow-600'}`}>{application.applicationStatus}</span>
                       </p>
-                      <select
+                      {/* <select
                         value={application.status}
                         onChange={(e) => handleStatusUpdate(application.id, e.target.value)}
                         className="mt-2 border rounded-md p-2 bg-white text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -147,7 +149,7 @@ export default function ProfilePage() {
                         <option value="Pending">Pending</option>
                         <option value="Accepted">Accepted</option>
                         <option value="Rejected">Rejected</option>
-                      </select>
+                      </select> */}
                     </div>
                   </li>
                 ))}

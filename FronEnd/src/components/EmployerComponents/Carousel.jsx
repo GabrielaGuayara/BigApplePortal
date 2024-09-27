@@ -30,12 +30,6 @@ const Carousel = ({ children:slides, autoSlide = false, autoSlideInterval = 3000
                 </button>
             </div>
 
-            <div className='absolute bottom-2 right-0 left-0'>
-              <div className='bg-slate-50 w-fit p-2 mb-10 bg-opacity-50 rounded-xl text-center m-auto'>
-                  <h1 className="text-4xl md:text-5xl font-bold mb-4 text-black">Why Choose The Big Apple Portal?</h1>
-                  <p className="text-xl mb-8">Kickstart your career with hands-on learning opportunities</p>
-                </div>
-            <div/>
 
                 <div className='flex items-center justify-center gap-2'>
                     {slides.map((s, i) => (
@@ -43,7 +37,6 @@ const Carousel = ({ children:slides, autoSlide = false, autoSlideInterval = 3000
                     ))}
                 </div>
             </div>
-        </div>
 
     )
 }

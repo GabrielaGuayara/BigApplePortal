@@ -2,8 +2,7 @@ import React,{useState} from 'react';
 import ViewPostedApprenticeships from './ViewPostedApprenticeship';
 import AddApprenticeship from './AddApprenticeship';
 import EmployerSidebar from './EmployerSidebar';
-import Carousel from "../../assets/CarouselImage2.jpg"
-
+import CarouselImage2 from "../../images/CarouselImage2.jpg"
 
 export default function EmployerDashboard() {
   const employerName = localStorage.getItem("name");
@@ -18,7 +17,7 @@ export default function EmployerDashboard() {
       default:
         return (
           <div className="text-center">
-            <h2 className="text-4xl font-bold text-blue-600 mb-4">Welcome, {employerName}</h2>
+            <h2 className="text-4xl font-bold text-blue-800 mb-4">Welcome, {employerName}</h2>
             <p className="text-xl text-yellow-600">Select an option from the sidebar to get started.</p>
           </div>
         );
@@ -32,7 +31,7 @@ export default function EmployerDashboard() {
       <div 
         className="bg-white rounded-lg shadow-lg p-6 md:p-8 h-full"
         style={{
-          backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(${Carousel})`,
+          backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(${CarouselImage2})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -43,12 +42,7 @@ export default function EmployerDashboard() {
   </div>
 
 
-    // <Dashboard 
-    //   Sidebar={EmployerSidebar}
-    //   renderComponent={() => renderComponent(activeComponent)}
-    //   backgroundImage={HeroImage}
-    //   dashboardTitle="Employer Dashboard"
-    // />
+   
   );
 }
 

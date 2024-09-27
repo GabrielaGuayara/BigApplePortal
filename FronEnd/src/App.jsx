@@ -1,4 +1,4 @@
-import  Routes  from "./components/Routes"
+import  Routes  from "./Routes/Routes"
 import Footer from "./components/pageComponents/Footer";
 import Navbar from "./components/pageComponents/Navbar"
 

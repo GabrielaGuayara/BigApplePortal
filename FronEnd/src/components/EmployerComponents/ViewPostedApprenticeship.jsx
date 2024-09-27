@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import ApiService from '../../Service/ApiService';
+import { useNavigate } from 'react-router-dom';
+
 
 const ViewPostedApprenticeships = () => {
     const [apprenticeships, setApprenticeships] = useState([]);
     const [error, setError] = useState(null);
-    const userId = localStorage.getItem('id'); // Get userId from local storage
+    const userId = localStorage.getItem('id'); 
+    const navigate = useNavigate();// Get userId from local storage
 
     useEffect(() => {
         const fetchApprenticeships = async () => {
@@ -43,6 +46,7 @@ const ViewPostedApprenticeships = () => {
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Location</th>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">View Applicants</th>
                     </tr>
                 </thead>
                 
@@ -67,6 +71,16 @@ const ViewPostedApprenticeships = () => {
                             </button>
                      
                     </td>
+                    <td className='border border-1'>
+                        <button className='text-md underline text-blue-600'
+                            onClick={() => navigate(`/employer/view-applicants/${apprenticeship.id}`)}
+                            >
+                                View Applicants
+                        </button>
+                            
+                    </td>
+
+
                   </tr>
                 ))}
               </tbody>

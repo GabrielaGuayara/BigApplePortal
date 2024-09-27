@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; 
-import { BuildingOffice2Icon, CurrencyDollarIcon, MagnifyingGlassCircleIcon } from '@heroicons/react/20/solid';
-import { LocateIcon, LocateOffIcon, MapIcon, MapPin } from 'lucide-react';
+import { BuildingOffice2Icon, CurrencyDollarIcon} from '@heroicons/react/20/solid';
+import { MapPin } from 'lucide-react';
 
-import {Aperture, Search} from "lucide-react"
 import ApiService from '../../Service/ApiService';
+
 const ApprenticeshipSearch = ({ handleSearchResult }) => {
   const [apprenticeships, setApprenticeships] = useState([]);
   const [filteredTerm, setFilteredTerm] = useState('');
@@ -36,10 +36,8 @@ const ApprenticeshipSearch = ({ handleSearchResult }) => {
   return (
     <>
     
-    <section>
-      <div className='flex  flex-col w-full justify-center space-x-4'>
-      <h2 className="text-3xl font-bold text-[#0A1128] mb-8">Available Apprenticeships</h2>
-      <div className="container mx-auto px-4 py-16 text-center flex flex-col">
+    
+      <div className="container mx-auto text-center flex flex-col">
         
         {/* <div>
           <select
@@ -91,15 +89,9 @@ const ApprenticeshipSearch = ({ handleSearchResult }) => {
     )}
 </div>
 <div className="text-center mt-12">
-    <Link
-        to="/opportunities"
-        className="inline-block bg-[#1C3879] hover:bg-[#2B4F9A] text-white px-6 py-3 rounded-full transition-colors duration-200"
-    >
-        View All Opportunities
-    </Link>
+   
 </div>
-</div>
-</section>
+
 
     </>
   );

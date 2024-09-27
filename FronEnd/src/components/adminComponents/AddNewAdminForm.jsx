@@ -50,7 +50,8 @@ const AddNewAdminForm = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex justify-center flex-col items-center min-h-screen bg-gray-100 py-3">
+      <h2 className='mb-6 font-bold text-xl'>Fill out the form to add a new ADMIN</h2>
       <div className="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
         {errorMessage && <p className='text-red-700'>{errorMessage}</p>}
         {successMessage && <p className='text-green-700'>{successMessage}</p>}

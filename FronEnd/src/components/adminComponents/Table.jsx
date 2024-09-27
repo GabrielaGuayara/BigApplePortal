@@ -26,7 +26,7 @@ const EmployerTable = () => {
                     <td className="px-6 py-4 text-sm font-medium text-gray-800">{name}</td>
                     <td className="px-6 py-4 text-sm text-gray-800">{Math.floor(Math.random() * 50)}</td>
                     <td className="px-6 py-4 text-right text-sm font-medium">
-                      <button className="inline-flex items-center gap-x-2 text-sm font-semibold text-red-600 hover:text-red-800 transition duration-300 ease-in-out">
+                      <button className="inline-flex items-center gap-x-2 text-sm font-semibold text-red-600 hover:text-red-800 transition duration-300 ease-in-out text">
                         Delete
                       </button>
                     </td>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SidebarDashboard from '../adminComponents/SidebarDashboard';
 import ViewAllUsers from './ViewAllUsers';
-import Carousel from "../../assets/CarouselImage2.jpg"
+import CarouselImage2 from "../../images/CarouselImage2.jpg"
 import AddNewAdminForm from './AddNewAdminForm';
 
 export default function AdminDashboard() {
@@ -30,7 +30,7 @@ export default function AdminDashboard() {
         <div 
           className="bg-white rounded-lg shadow-lg p-6 md:p-8 h-full"
           style={{
-            backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(${Carousel})`,
+            backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(${CarouselImage2})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}

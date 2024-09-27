@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { Building2, DollarSign, Briefcase, LogIn } from 'lucide-react'
+import { Building2, DollarSign, Briefcase, LogIn, HomeIcon } from 'lucide-react'
 import ApiService from '../../Service/ApiService';
-import Logo from "../../assets/logo.png"
-
+import Logo from "../../images/logo.png"
 
 
 const Navbar = () => {
@@ -31,7 +30,7 @@ const Navbar = () => {
       <NavLink to="/" className="text-2xl font-bold"><img src={Logo} alt="website logo" className='w-36'></img></NavLink>
       <div className="flex space-x-4">
       <NavLink to="/home" className="hover:text-yellow-300 transition-colors duration-200 flex items-center">
-          <Briefcase className="mr-1" size={18} />
+          <HomeIcon className="mr-1" size={18} />
          Home
         </NavLink>
         <NavLink to="/opportunities" className="hover:text-yellow-300 transition-colors duration-200 flex items-center">
@@ -46,7 +45,7 @@ const Navbar = () => {
 
         <NavLink to="/welcome-employers" className="hover:text-yellow-300 transition-colors duration-200 flex items-center">
           <Building2 className="mr-1" size={18} />
-          Post a Job
+          Employer Page
         </NavLink>
 
 
