@@ -1,12 +1,10 @@
 package com.bigappleportal.utils;
 
 import com.bigappleportal.dto.ApprenticeshipDTO;
-import com.bigappleportal.dto.ApprenticeshipCategoryDTO;
 import com.bigappleportal.dto.ApplicationDTO;
 import com.bigappleportal.dto.UserDTO;
 import com.bigappleportal.exceptions.OurException;
 import com.bigappleportal.model.Apprenticeship;
-import com.bigappleportal.model.ApprenticeshipCategory;
 import com.bigappleportal.model.Application;
 import com.bigappleportal.model.User;
 
@@ -29,8 +27,20 @@ public class Utils {
         userDTO.setEmail(user.getEmail());
         userDTO.setPhoneNumber(user.getPhoneNumber());
         userDTO.setRole(user.getRole());
-//        userDTO.setProfile(user.getProfile());
+        userDTO.setSummary(user.getSummary());
+        List<ApprenticeshipDTO> apprenticeshipDTOs = user.getApprenticeships().stream()
+                .map(Utils::mapApprenticeshipEntityToApprenticeshipDTO)
+                .collect(Collectors.toList());
+        userDTO.setApprenticeships(apprenticeshipDTOs);
+
+        // Map applications
+//        List<ApplicationDTO> applicationDTOs = user.getApplications().stream()
+//                .map(Utils::mapApplicationEntityToApplicationDTO)
+//                .collect(Collectors.toList());
+//        userDTO.setApplications(applicationDTOs);
+
         return userDTO;
+
     }
 
     // Map Apprenticeship entity to ApprenticeshipDTO
@@ -38,11 +48,18 @@ public class Utils {
         ApprenticeshipDTO apprenticeshipDTO = new ApprenticeshipDTO();
         apprenticeshipDTO.setId(apprenticeship.getId());
         apprenticeshipDTO.setTitle(apprenticeship.getTitle());
+        apprenticeshipDTO.setCompany(apprenticeship.getCompany());
         apprenticeshipDTO.setDescription(apprenticeship.getDescription());
+        apprenticeshipDTO.setApprenticeshipType(apprenticeship.getApprenticeshipType());
+        apprenticeshipDTO.setSalaryRange(apprenticeship.getSalaryRange());
         apprenticeshipDTO.setLocation(apprenticeship.getLocation());
         apprenticeshipDTO.setStatus(apprenticeship.getStatus());
         apprenticeshipDTO.setDatePosted(apprenticeship.getDatePosted());
-
+        apprenticeshipDTO.setExperienceLevel(apprenticeship.getExperienceLevel());
+        List<ApplicationDTO> applicationDTOs = apprenticeship.getApplications().stream()
+                .map(Utils::mapApplicationEntityToApplicationDTO)
+                .collect(Collectors.toList());
+        apprenticeshipDTO.setApplications(applicationDTOs);
         return apprenticeshipDTO;
     }
 
@@ -53,18 +70,11 @@ public class Utils {
         applicationDTO.setDateApplied(application.getDateApplied());
         applicationDTO.setStatus(application.getStatus());
         applicationDTO.setUser(mapUserEntityToUserDTO(application.getUser()));
-        applicationDTO.setApprenticeship(mapApprenticeshipEntityToApprenticeshipDTO(application.getApprenticeship()));
+
         return applicationDTO;
     }
 
-    // Map ApprenticeshipCategory entity to ApprenticeshipCategoryDTO
-    public static ApprenticeshipCategoryDTO mapApprenticeshipCategoryEntityToApprenticeshipCategoryDTO(ApprenticeshipCategory category) {
-        ApprenticeshipCategoryDTO categoryDTO = new ApprenticeshipCategoryDTO();
-        categoryDTO.setId(category.getId());
-        categoryDTO.setName(category.getName());
-        categoryDTO.setDescription(category.getDescription());
-        return categoryDTO;
-    }
+
 
     // Map User entity to UserDTO, including associated applications
     public static UserDTO mapUserEntityToUserDTOWithApplications(User user) {
@@ -105,11 +115,6 @@ public class Utils {
     // Map a list of Application entities to a list of ApplicationDTOs
     public static List<ApplicationDTO> mapApplicationListEntityToApplicationListDTO(List<Application> applicationList) {
         return applicationList.stream().map(Utils::mapApplicationEntityToApplicationDTO).collect(Collectors.toList());
-    }
-
-    // Map a list of ApprenticeshipCategory entities to a list of ApprenticeshipCategoryDTOs
-    public static List<ApprenticeshipCategoryDTO> mapApprenticeshipCategoryListEntityToApprenticeshipCategoryListDTO(List<ApprenticeshipCategory> categoryList) {
-        return categoryList.stream().map(Utils::mapApprenticeshipCategoryEntityToApprenticeshipCategoryDTO).collect(Collectors.toList());
     }
 
 

@@ -53,6 +53,7 @@ public class ApplicationController {
 
     // Update the status of an application
     @PutMapping("/{applicationId}/status")
+    @PreAuthorize("hasAuthority('EMPLOYEE')")
     public ResponseEntity<Response> updateStatus(
             @PathVariable Long applicationId,
             @RequestBody String newStatus) {

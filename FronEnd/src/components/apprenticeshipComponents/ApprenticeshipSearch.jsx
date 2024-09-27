@@ -36,24 +36,11 @@ const ApprenticeshipSearch = ({ handleSearchResult }) => {
   return (
     <>
     
-
-      <div className='flex w-full justify-center space-x-4'>
-        <div className='flex justify-center items-center'>
-          <div className="relative max-w-xl">
-            <input
-              type="text"
-              placeholder="Search for apprenticeships..."
-              onChange={handleSearch}
-              className="w-full px-4 py-2 rounded-full border-2 border-blue-300 focus:outline-none focus:border-blue-500"
-            />
-            <button
-              onClick={handleSearch}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 transition-colors duration-200"
-            >
-              <Search size={20} />
-            </button>
-          </div>
-        </div>
+    <section>
+      <div className='flex  flex-col w-full justify-center space-x-4'>
+      <h2 className="text-3xl font-bold text-[#0A1128] mb-8">Available Apprenticeships</h2>
+      <div className="container mx-auto px-4 py-16 text-center flex flex-col">
+        
         {/* <div>
           <select
             value={borough}
@@ -111,6 +98,8 @@ const ApprenticeshipSearch = ({ handleSearchResult }) => {
         View All Opportunities
     </Link>
 </div>
+</div>
+</section>
 
     </>
   );

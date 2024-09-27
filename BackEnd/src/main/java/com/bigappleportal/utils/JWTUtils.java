@@ -1,5 +1,6 @@
 package com.bigappleportal.utils;
 
+import com.bigappleportal.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,7 +19,7 @@ public class JWTUtils {
 
     private static final long EXPIRATION_TIME = 1000L * 60 * 60 * 24 * 7; // 7 days
 
-    private final SecretKey Key;
+    private static SecretKey Key;
 
     public JWTUtils() {
         String secreteString = "843567893696976453275974432697R634976R738467TR678T34865R6834R8763T478378637664538745673865783678548735687R3";
@@ -27,9 +28,9 @@ public class JWTUtils {
 
     }
 
-    public String generateToken(UserDetails userDetails) {
+    public static String generateToken(User user) {
         return Jwts.builder()
-                .subject(userDetails.getUsername())
+                .subject(user.getUsername())
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(Key)

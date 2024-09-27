@@ -83,8 +83,24 @@ const EmployerPage = () => {
             <p className='text-3xl mb-8 text-orange-700 font-bold  italic'> <span><Quote style={{ transform: `translateX(rotate: 90deg)` }} /></span> Indeed’s platform is so easy to use. We’ve hired about 35-40 people on Indeed in the past two years" </p> 
             <p className='text-lg text-gray-700 mb-8 font-sans'>Flint Beamon, Founder/COO </p>
             <p className='text-lg text-gray-700 mb-8 leading-3'>Barkin' Creek </p>
+          </div>
+        
+        </div>
+
+        <div className="container mx-auto flex items-center p-10">
+          <div>
+            <p className='text-3xl mb-8 text-orange-700 font-bold  italic'> <span><Quote style={{ transform: `translateX(rotate: 90deg)` }} /></span> Indeed’s platform is so easy to use. We’ve hired about 35-40 people on Indeed in the past two years" </p> 
+            <div>
+            <p className='text-lg text-gray-700 mb-8 font-sans'>Carmen Santos, Founder/COO </p>
+            <p className='text-lg text-gray-700 mb-8 leading-3'>Barkin' Creek </p>
             </div>
-         </div>
+          </div>
+            <div className='text-left w-4/12 pl-10'>
+            <img src={employeePic} alt="career seeker image" className=' w-50 h-50 rounded-full mx-auto mb-4'></img>
+          </div>
+        
+        </div>
+        
     </section>
     
     

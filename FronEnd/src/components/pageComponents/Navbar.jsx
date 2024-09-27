@@ -30,6 +30,10 @@ const Navbar = () => {
 <div className="container mx-auto flex justify-between items-center">
       <NavLink to="/" className="text-2xl font-bold"><img src={Logo} alt="website logo" className='w-36'></img></NavLink>
       <div className="flex space-x-4">
+      <NavLink to="/home" className="hover:text-yellow-300 transition-colors duration-200 flex items-center">
+          <Briefcase className="mr-1" size={18} />
+         Home
+        </NavLink>
         <NavLink to="/opportunities" className="hover:text-yellow-300 transition-colors duration-200 flex items-center">
           <Briefcase className="mr-1" size={18} />
           Opportunities
