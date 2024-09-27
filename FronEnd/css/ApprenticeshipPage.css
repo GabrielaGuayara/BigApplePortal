@@ -1,0 +1,526 @@
+.apprenticeship {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .apprenticeship .div {
+    background-color: #ffffff;
+    overflow: hidden;
+    width: 1440px;
+    height: 1193px;
+    position: relative;
+  }
+  
+  .apprenticeship .overlap-group {
+    position: absolute;
+    width: 1440px;
+    height: 813px;
+    top: 380px;
+    left: 3px;
+    background-color: #d9d9d9;
+  }
+  
+  .apprenticeship .overlap {
+    position: absolute;
+    width: 410px;
+    height: 220px;
+    top: 149px;
+    left: 54px;
+    border-radius: 20px;
+  }
+  
+  .apprenticeship .rectangle {
+    position: absolute;
+    width: 410px;
+    height: 220px;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    border-radius: 20px;
+  }
+  
+  .apprenticeship .rectangle-2 {
+    position: absolute;
+    width: 137px;
+    height: 27px;
+    top: 20px;
+    left: 29px;
+    background-color: #000000;
+    border-radius: 10px;
+  }
+  
+  .apprenticeship .text-wrapper {
+    top: 21px;
+    left: 16px;
+    position: absolute;
+    width: 162px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .apprenticeship .rectangle-3 {
+    position: absolute;
+    width: 93px;
+    height: 27px;
+    top: 22px;
+    left: 286px;
+    background-color: #938e8938;
+    border-radius: 10px;
+  }
+  
+  .apprenticeship .text-wrapper-2 {
+    top: 24px;
+    left: 263px;
+    position: absolute;
+    width: 138px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #100f0f;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .apprenticeship .text-wrapper-3 {
+    position: absolute;
+    width: 348px;
+    top: 62px;
+    left: 38px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .apprenticeship .department {
+    top: 91px;
+    left: 29px;
+    position: absolute;
+    width: 39px;
+    height: 38px;
+  }
+  
+  .apprenticeship .address {
+    top: 129px;
+    left: 20px;
+    position: absolute;
+    width: 56px;
+    height: 44px;
+  }
+  
+  .apprenticeship .text-wrapper-4 {
+    position: absolute;
+    width: 97px;
+    top: 104px;
+    left: 91px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #706262;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .apprenticeship .text-wrapper-5 {
+    position: absolute;
+    top: 154px;
+    left: 93px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #867575;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .apprenticeship .overlap-2 {
+    position: absolute;
+    width: 410px;
+    height: 220px;
+    top: 153px;
+    left: 508px;
+    background-color: #ffffff;
+    border-radius: 20px;
+  }
+  
+  .apprenticeship .overlap-3 {
+    position: absolute;
+    width: 162px;
+    height: 28px;
+    top: 20px;
+    left: 16px;
+  }
+  
+  .apprenticeship .rectangle-4 {
+    position: absolute;
+    width: 137px;
+    height: 27px;
+    top: 0;
+    left: 13px;
+    background-color: #000000;
+    border-radius: 10px;
+  }
+  
+  .apprenticeship .text-wrapper-6 {
+    top: 1px;
+    left: 0;
+    position: absolute;
+    width: 162px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .apprenticeship .overlap-4 {
+    position: absolute;
+    width: 138px;
+    height: 29px;
+    top: 22px;
+    left: 272px;
+  }
+  
+  .apprenticeship .rectangle-5 {
+    position: absolute;
+    width: 93px;
+    height: 27px;
+    top: 0;
+    left: 14px;
+    background-color: #938e8938;
+    border-radius: 10px;
+  }
+  
+  .apprenticeship .text-wrapper-7 {
+    top: 2px;
+    left: 0;
+    position: absolute;
+    width: 138px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #100f0f;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .apprenticeship .overlap-5 {
+    position: absolute;
+    width: 410px;
+    height: 220px;
+    top: 156px;
+    left: 991px;
+    background-color: #ffffff;
+    border-radius: 20px;
+  }
+  
+  .apprenticeship .overlap-6 {
+    position: absolute;
+    width: 138px;
+    height: 29px;
+    top: 22px;
+    left: 263px;
+  }
+  
+  .apprenticeship .rectangle-6 {
+    position: absolute;
+    width: 93px;
+    height: 27px;
+    top: 0;
+    left: 23px;
+    background-color: #938e8938;
+    border-radius: 10px;
+  }
+  
+  .apprenticeship .img {
+    top: 91px;
+    left: 35px;
+    position: absolute;
+    width: 39px;
+    height: 38px;
+  }
+  
+  .apprenticeship .address-2 {
+    top: 134px;
+    left: 19px;
+    position: absolute;
+    width: 56px;
+    height: 44px;
+  }
+  
+  .apprenticeship .overlap-7 {
+    position: absolute;
+    width: 410px;
+    height: 220px;
+    top: 426px;
+    left: 54px;
+    background-color: #ffffff;
+    border-radius: 20px;
+  }
+  
+  .apprenticeship .overlap-8 {
+    position: absolute;
+    width: 410px;
+    height: 220px;
+    top: 430px;
+    left: 508px;
+    background-color: #ffffff;
+    border-radius: 20px;
+  }
+  
+  .apprenticeship .overlap-9 {
+    position: absolute;
+    width: 410px;
+    height: 220px;
+    top: 433px;
+    left: 991px;
+    background-color: #ffffff;
+    border-radius: 20px;
+  }
+  
+  .apprenticeship .overlap-10 {
+    position: absolute;
+    width: 359px;
+    height: 105px;
+    top: 62px;
+    left: 27px;
+  }
+  
+  .apprenticeship .overlap-11 {
+    position: absolute;
+    width: 359px;
+    height: 105px;
+    top: 0;
+    left: 0;
+  }
+  
+  .apprenticeship .text-wrapper-8 {
+    position: absolute;
+    width: 348px;
+    top: 0;
+    left: 11px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .apprenticeship .department-2 {
+    top: 26px;
+    left: 8px;
+    position: absolute;
+    width: 39px;
+    height: 38px;
+  }
+  
+  .apprenticeship .address-3 {
+    top: 61px;
+    left: 0;
+    position: absolute;
+    width: 56px;
+    height: 44px;
+  }
+  
+  .apprenticeship .text-wrapper-9 {
+    position: absolute;
+    width: 97px;
+    top: 42px;
+    left: 64px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #706262;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .apprenticeship .text-wrapper-10 {
+    position: absolute;
+    top: 74px;
+    left: 66px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #867575;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .apprenticeship .text-wrapper-11 {
+    position: absolute;
+    top: 73px;
+    left: 106px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .apprenticeship .overlap-12 {
+    position: absolute;
+    width: 1440px;
+    height: 79px;
+    top: 0;
+    left: 0;
+    background-color: #d9d9d9;
+  }
+  
+  .apprenticeship .text-wrapper-12 {
+    position: absolute;
+    width: 266px;
+    top: 22px;
+    left: 97px;
+    font-family: "Inter-Bold", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 25px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .apprenticeship .text-wrapper-13 {
+    position: absolute;
+    width: 113px;
+    top: 22px;
+    left: 1288px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 22px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .apprenticeship .text-wrapper-14 {
+    position: absolute;
+    width: 193px;
+    top: 22px;
+    left: 1087px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 22px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .apprenticeship .div-wrapper {
+    position: absolute;
+    width: 756px;
+    height: 59px;
+    top: 230px;
+    left: 97px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    border: 2px solid;
+    border-color: #000000;
+  }
+  
+  .apprenticeship .p {
+    position: absolute;
+    width: 421px;
+    top: 15px;
+    left: 15px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #867575;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .apprenticeship .overlap-13 {
+    position: absolute;
+    width: 431px;
+    height: 209px;
+    top: 110px;
+    left: 949px;
+    background-color: #d9d9d9;
+    border-radius: 20px;
+  }
+  
+  .apprenticeship .text-wrapper-15 {
+    position: absolute;
+    width: 195px;
+    top: 11px;
+    left: 127px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .apprenticeship .rectangle-wrapper {
+    position: absolute;
+    width: 339px;
+    height: 30px;
+    top: 64px;
+    left: 56px;
+    background-color: #f44b4b;
+    border-radius: 20px;
+  }
+  
+  .apprenticeship .rectangle-7 {
+    height: 30px;
+    background-color: #f44b4b;
+  }
+  
+  .apprenticeship .rectangle-8 {
+    position: absolute;
+    width: 339px;
+    height: 30px;
+    top: 134px;
+    left: 56px;
+    background-color: #f44b4b;
+    border-radius: 20px;
+  }
+  
+  .apprenticeship .text-wrapper-16 {
+    position: absolute;
+    top: 129px;
+    left: 101px;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .apprenticeship .text-wrapper-17 {
+    position: absolute;
+    top: 186px;
+    left: 101px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  

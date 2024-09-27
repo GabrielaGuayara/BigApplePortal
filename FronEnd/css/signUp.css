@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="sign-up">
+      <div class="div">
+        <div class="overlap-group">
+          <div class="text-wrapper">TheBigApplePortal</div>
+          <div class="overlap">
+            <div class="text-wrapper-2">CareerSeekers</div>
+            <div class="text-wrapper-3">Employeers</div>
+          </div>
+          <div class="text-wrapper-4">Login</div>
+        </div>
+        <div class="overlap-2">
+          <div class="text-wrapper-5">Sign Up</div>
+          <div class="rectangle"></div>
+          <div class="rectangle-2"></div>
+          <div class="rectangle-3"></div>
+          <div class="text-wrapper-6">Email Address</div>
+          <div class="text-wrapper-7">Password</div>
+          <div class="text-wrapper-8">Name</div>
+          <div class="overlap-3">
+            <div class="rectangle-4"></div>
+            <div class="text-wrapper-9">Submit</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
