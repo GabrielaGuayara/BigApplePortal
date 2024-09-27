@@ -18,6 +18,8 @@ public class Response {
     private String expirationTime;
     private Long id;
     private String name;
+    private String status;
+    private String applicationStatus;
 
     private UserDTO user;
     private ApprenticeshipDTO apprenticeship;

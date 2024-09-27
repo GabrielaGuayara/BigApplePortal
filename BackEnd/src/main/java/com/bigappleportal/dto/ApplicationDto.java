@@ -11,7 +11,7 @@ public class ApplicationDTO {
 
     private Long id;
     private Date dateApplied;
-    private String status;
+    private String applicationStatus;
     private UserDTO user; // Include employee details
     private ApprenticeshipDTO apprenticeship; // Include apprenticeship details
 //    private Long apprenticeshipId;

@@ -23,4 +23,5 @@ public class UserDTO {
     // For employee role
     private List<ApplicationDTO> applications = new ArrayList<>();
 
+
 }
