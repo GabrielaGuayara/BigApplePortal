@@ -108,7 +108,7 @@ public class ApplicationServiceImpl implements IApplicationService {
         ApplicationDTO dto = new ApplicationDTO();
         dto.setId(application.getId());
         dto.setDateApplied(application.getDateApplied());
-        dto.setStatus(application.getStatus());
+        dto.setApplicationStatus(application.getStatus());
 
         // Map user and apprenticeship details if necessary
         UserDTO userDTO = new UserDTO(); // Ensure to populate this
@@ -116,7 +116,7 @@ public class ApplicationServiceImpl implements IApplicationService {
         userDTO.setName(application.getUser().getName());
         dto.setUser(userDTO);
 
-        ApprenticeshipDTO apprenticeshipDTO = new ApprenticeshipDTO(); // Ensure to populate this
+        ApprenticeshipDTO apprenticeshipDTO = new ApprenticeshipDTO();
         apprenticeshipDTO.setId(application.getApprenticeship().getId());
         apprenticeshipDTO.setTitle(application.getApprenticeship().getTitle());
         dto.setApprenticeship(apprenticeshipDTO);
@@ -146,7 +146,6 @@ public class ApplicationServiceImpl implements IApplicationService {
     public Response updateApplicationStatus(Long applicationId, String newStatus) {
         Response response = new Response();
         try {
-            // Fetch the application by ID
             Application application = applicationRepository.findById(applicationId)
                     .orElseThrow(() -> new OurException("Application not found"));
 
@@ -159,19 +158,19 @@ public class ApplicationServiceImpl implements IApplicationService {
             response.setStatusCode(200);
             response.setMessage("Application status updated successfully");
             response.setApplication(applicationDTO);
+            response.setApplicationStatus(updatedApplication.getStatus());
+
         } catch (OurException e) {
-            response.setStatusCode(404); // Not found
+            response.setStatusCode(404);
             response.setMessage(e.getMessage());
         } catch (Exception e) {
-            response.setStatusCode(500); // Internal server error
+            response.setStatusCode(500);
             response.setMessage("Error occurred during application status update: " + e.getMessage());
         }
         return response;
+
     }
-
-
-
-}
+    }
 
 
 

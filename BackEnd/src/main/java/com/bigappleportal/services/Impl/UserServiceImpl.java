@@ -141,17 +141,17 @@ public class UserServiceImpl implements IUserService {
 
 
     @Override
-    public Response updateUser(Long userId, UserUpdatedRequest userUpdateRequest) {
+    public Response updateUser(Long userId, EmployeeDTO employeeDTO) {
         Response response = new Response();
         try {
             User user = userRepository.findById(userId)
                     .orElseThrow(() -> new OurException("User not found"));
 
             // Update user details
-            user.setName(userUpdateRequest.getName());
-            user.setEmail(userUpdateRequest.getEmail());
-            user.setPhoneNumber(userUpdateRequest.getPhoneNumber());
-            user.setSummary(userUpdateRequest.getSummary());
+            user.setName(employeeDTO.getName());
+            user.setEmail(employeeDTO.getEmail());
+            user.setPhoneNumber(employeeDTO.getPhoneNumber());
+            user.setSummary(employeeDTO.getSummary());
 
             User updatedUser = userRepository.save(user);
             UserDTO userDTO = Utils.mapUserEntityToUserDTO(updatedUser);

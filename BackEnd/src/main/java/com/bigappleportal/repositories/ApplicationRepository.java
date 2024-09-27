@@ -12,8 +12,8 @@ import java.util.Optional;
 public interface ApplicationRepository extends JpaRepository<Application, Long> {
 
 
-    @Query("SELECT a FROM Application a WHERE a.status = :status")
-    List<Application> findByStatus(String status);
+//    @Query("SELECT a FROM Application a WHERE a.status = :status")
+//    List<Application> findByStatus(String status);
 
 
     List<Application> findByUser(User user);

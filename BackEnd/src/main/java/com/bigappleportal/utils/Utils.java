@@ -68,7 +68,7 @@ public class Utils {
         ApplicationDTO applicationDTO = new ApplicationDTO();
         applicationDTO.setId(application.getId());
         applicationDTO.setDateApplied(application.getDateApplied());
-        applicationDTO.setStatus(application.getStatus());
+        applicationDTO.setApplicationStatus(application.getStatus());
         applicationDTO.setUser(mapUserEntityToUserDTO(application.getUser()));
 
         return applicationDTO;

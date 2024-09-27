@@ -2,10 +2,7 @@ package com.bigappleportal.services.interfaces;
 
 
 
-import com.bigappleportal.dto.AdminRequest;
-import com.bigappleportal.dto.LoginRequest;
-import com.bigappleportal.dto.Response;
-import com.bigappleportal.dto.UserUpdatedRequest;
+import com.bigappleportal.dto.*;
 import com.bigappleportal.model.User;
 
 
@@ -21,6 +18,6 @@ public interface IUserService {
     Response getUserById(String userId);
     Response getMyInfo(String email);
 
-    Response updateUser(Long applicationId, UserUpdatedRequest userUpdatedRequest);
+    Response updateUser(Long applicationId, EmployeeDTO employeeDTO);
 
 }

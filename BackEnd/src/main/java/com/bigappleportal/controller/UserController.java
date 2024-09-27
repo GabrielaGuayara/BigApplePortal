@@ -1,9 +1,6 @@
 package com.bigappleportal.controller;
 
-import com.bigappleportal.dto.AdminRequest;
-import com.bigappleportal.dto.LoginRequest;
-import com.bigappleportal.dto.Response;
-import com.bigappleportal.dto.UserUpdatedRequest;
+import com.bigappleportal.dto.*;
 import com.bigappleportal.model.User;
 
 import com.bigappleportal.services.interfaces.IUserService;
@@ -30,6 +27,7 @@ public class UserController {
     }
 
     @GetMapping("/get-by-id/{id}")
+    @PreAuthorize("hasAuthority('EMPLOYER')")
     public ResponseEntity<Response> getUserById(@PathVariable String id) {
         Response response = userService.getUserById(id);
         return ResponseEntity.status(response.getStatusCode()).body(response);
@@ -40,7 +38,7 @@ public class UserController {
     @PreAuthorize("hasAuthority('EMPLOYEE')")
     public ResponseEntity<Response> updateUserProfile(
             @PathVariable Long userId,
-            @RequestBody UserUpdatedRequest userUpdateRequest) {
+            @RequestBody EmployeeDTO userUpdateRequest) {
         Response response = userService.updateUser(userId, userUpdateRequest);
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }

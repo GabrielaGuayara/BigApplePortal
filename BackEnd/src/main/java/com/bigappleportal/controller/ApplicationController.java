@@ -2,6 +2,7 @@ package com.bigappleportal.controller;
 
 import com.bigappleportal.dto.ApplicationDTO;
 import com.bigappleportal.dto.Response;
+import com.bigappleportal.dto.StatusRequest;
 import com.bigappleportal.services.interfaces.IApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,15 +25,23 @@ public class ApplicationController {
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 
-//    @PutMapping("/update/{userId}/{applicationId}")
+
+    // Update the status of an application
+//    @PutMapping("/{applicationId}/newStatus")
 //    @PreAuthorize("hasAuthority('EMPLOYEE')")
-//    public ResponseEntity<Response> updateApplication(
-//            @PathVariable Long userId,
+//    public ResponseEntity<Response> updateStatus(
 //            @PathVariable Long applicationId,
-//            @RequestBody ApplicationDTO applicationDTO) {
-//        Response response = applicationService.(userId, applicationId, applicationDTO);
+//            @RequestBody String newStatus) {
+//        Response response = applicationService.updateApplicationStatus(applicationId, newStatus);
 //        return ResponseEntity.status(response.getStatusCode()).body(response);
 //    }
+
+    @PutMapping("/{id}/status")
+    public ResponseEntity<Response> updateApplicationStatus(@PathVariable Long id, @RequestBody StatusRequest request) {
+        Response response = applicationService.updateApplicationStatus(id, request.getStatus());
+        return ResponseEntity.ok(response);
+    }
+
 
     @GetMapping("/view/{userId}/all")
     @PreAuthorize("hasAuthority('EMPLOYEE')")
@@ -51,15 +60,6 @@ public class ApplicationController {
     }
 
 
-    // Update the status of an application
-    @PutMapping("/{applicationId}/status")
-    @PreAuthorize("hasAuthority('EMPLOYEE')")
-    public ResponseEntity<Response> updateStatus(
-            @PathVariable Long applicationId,
-            @RequestBody String newStatus) {
-        Response response = applicationService.updateApplicationStatus(applicationId, newStatus);
-        return ResponseEntity.status(response.getStatusCode()).body(response);
-    }
 
 
 
