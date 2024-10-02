@@ -45,7 +45,7 @@ public class ApplicationServiceImpl implements IApplicationService {
             application.setUser(user);
             application.setApprenticeship(apprenticeship);
             application.setDateApplied(new Date());
-            application.setStatus("Pending");
+            application.setStatusApplication("Pending");
 
             applicationRepository.save(application);
 
@@ -108,7 +108,7 @@ public class ApplicationServiceImpl implements IApplicationService {
         ApplicationDTO dto = new ApplicationDTO();
         dto.setId(application.getId());
         dto.setDateApplied(application.getDateApplied());
-        dto.setApplicationStatus(application.getStatus());
+        dto.setApplicationStatus(application.getStatusApplication());
 
         // Map user and apprenticeship details if necessary
         UserDTO userDTO = new UserDTO(); // Ensure to populate this
@@ -150,7 +150,7 @@ public class ApplicationServiceImpl implements IApplicationService {
                     .orElseThrow(() -> new OurException("Application not found"));
 
             // Update the application status
-            application.setStatus(newStatus);
+            application.setStatusApplication(newStatus);
             Application updatedApplication = applicationRepository.save(application);
 
             // Prepare the response
@@ -158,7 +158,7 @@ public class ApplicationServiceImpl implements IApplicationService {
             response.setStatusCode(200);
             response.setMessage("Application status updated successfully");
             response.setApplication(applicationDTO);
-            response.setApplicationStatus(updatedApplication.getStatus());
+            response.setApplicationStatus(updatedApplication.getStatusApplication());
 
         } catch (OurException e) {
             response.setStatusCode(404);

@@ -13,9 +13,13 @@ import AddApprenticeship from "../components/EmployerComponents/AddApprenticeshi
 import ViewPostedApprenticeship from "../components/EmployerComponents/ViewPostedApprenticeship";
 import EmployerDashboard from "../components/EmployerComponents/EmployerDashboard";
 import AddNewAdminForm from "../components/adminComponents/AddNewAdminForm";
-import EditUser from "../components/employeeComponents/EditUser";
+import EditUser from "../components/employeeComponents/EditProfile";
 import ViewApplicants from "../components/EmployerComponents/ViewApplicants";
 import ApprenticeshipDisplay from "../pages/ApprenticeshipDisplay";
+import CreateUserProfile from "../components/employeeComponents/CreateProfile";
+import CreateProfile from "../components/employeeComponents/CreateProfile";
+import EditProfile from "../components/employeeComponents/EditProfile";
+import EditApprenticeship from "../components/EmployerComponents/EditApprenticeship";
 
 function Routes() {
   return (
@@ -36,15 +40,17 @@ function Routes() {
 
 
         <Route path="/employee/individual-apprenticeship-page/:id" element={<ApprenticeshipDetailPage/>} />
-        <Route path="/employee/profile" element={<ProfilePage/>} />
-        <Route path="/employee/edit-profile/:userId" element={<EditUser/>} />
+        <Route path="/employee/create-profile" element={<CreateProfile/>} />
+        <Route path="/employee/profile/:id" element={<ProfilePage/>} />
+        <Route path="/employee/edit-profile/:userId" element={<EditProfile/>} />
        
-
 
         <Route path="/employer-dashboard" element={<EmployerDashboard/>} />
         <Route path="/employer/post-apprenticeship" element={<AddApprenticeship/>} />
         <Route path="/employer/view-all-aprenticeship" element={<ViewPostedApprenticeship/>} />
+        <Route path="/employer/edit/:id" element={<EditApprenticeship/>} />
         <Route path="/employer/view-applicants/:id" element={<ViewApplicants/>} />
+       
 
         
 

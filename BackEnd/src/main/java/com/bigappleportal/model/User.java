@@ -3,16 +3,17 @@ package com.bigappleportal.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
@@ -31,11 +32,7 @@ public class User implements UserDetails {
     @NotBlank(message = "Password is required")
     private String password;
 
-    private String phoneNumber;
-
     private String role; // It could be "ADMIN", "EMPLOYER", "EMPLOYEE"
-
-    private String summary;
 
     // Employees' applications
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -45,12 +42,15 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Apprenticeship> apprenticeships = new ArrayList<>();
 
-
+    public User(Long id) {
+        this.id = id;
+    }
 
 
     // Implement UserDetails methods
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+    public Collection<? extends GrantedAuthority> getAuthorities()
+    {
         return List.of(new SimpleGrantedAuthority(role));
     }
 

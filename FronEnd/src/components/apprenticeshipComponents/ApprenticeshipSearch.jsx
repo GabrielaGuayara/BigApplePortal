@@ -1,102 +1,135 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; 
-import { BuildingOffice2Icon, CurrencyDollarIcon} from '@heroicons/react/20/solid';
-import { MapPin } from 'lucide-react';
-
+import { useNavigate } from 'react-router-dom';
+import { MagnifyingGlassIcon, AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 import ApiService from '../../Service/ApiService';
+import ApprenticeshipCard from './ApprenticeshipCard';
 
-const ApprenticeshipSearch = ({ handleSearchResult }) => {
+
+export default function ApprenticeshipSearch() {
+
+  //States to holds apprenticeships. filteredApprenitceships and filters 
   const [apprenticeships, setApprenticeships] = useState([]);
-  const [filteredTerm, setFilteredTerm] = useState('');
-  const isEmployee = ApiService.isEmployee();
+  const [filteredApprenticeships, setFilteredApprenticeships] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  //State to manage the state of selected borough and salaryRange
+  const [filters, setFilters] = useState({
+    selectedBorough: '',
+    selectedSalaryRange: ''
+  })
+
+  const [showFilters, setShowFilters] = useState(false);
   const navigate = useNavigate();
 
+  //useEffect to fetch apprenticeship from the API when component mounts
   useEffect(() => {
     const fetchApprenticeships = async () => {
       try {
         const response = await ApiService.getAllApprenticeships();
-        console.log(response.apprenticeships)
         setApprenticeships(response.apprenticeships);
-        setFilteredTerm(response.apprenticeships)
-        
-    } catch (error) {
+        console.log(response.apprenticeships)
+        setFilteredApprenticeships(response.apprenticeships);
+      } catch (error) {
         console.error(error);
-    }
+      }
     };
     fetchApprenticeships();
   }, []);
 
-  const handleSearch = (e) => {
-    setFilteredTerm(
-        apprenticeships.filter(apprenticeship =>
-            apprenticeship.title && apprenticeship.title.toLowerCase().includes(e.target.value.toLowerCase())
-        )
+  //UseEffect to filter apprenticeships based on seach and selected criteria
+  useEffect(() => {
+    const filtered = apprenticeships.filter(apprenticeship => 
+      apprenticeship.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      (filters.selectedBorough === '' || apprenticeship.location === filters.selectedBorough) &&
+      (filters.selectedSalaryRange === '' || apprenticeship.salaryRange === filters.selectedSalaryRange)
     );
-}
+    setFilteredApprenticeships(filtered);
+  }, [searchTerm, filters, apprenticeships]);
+
+  const boroughs = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island'];
+  const salaryRanges = ['$20 - $25 per hour', '$50,000 - $70,000', '$70,000 - $90,000', '$90,000+'];
+
+  //Function to hangle change on filters
+ const handleFilterChange = (e) =>{
+    const {name, value} = e.target;
+    setFilters(prevFilters =>({
+      ...prevFilters,
+      [name] : value
+    }))
+  }
   return (
-    <>
-    
-    
-      <div className="container mx-auto text-center flex flex-col">
+    <div className="min-h-screen bg-cream py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         
-        {/* <div>
-          <select
-            value={borough}
-            onChange={e => setBorough(e.target.value)}
-            className="p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option value="">All Boroughs</option>
-            <option value="Manhattan">Manhattan</option>
-            <option value="Brooklyn">Brooklyn</option>
-            <option value="Queens">Queens</option>
-            <option value="Bronx">Bronx</option>
-            <option value="Staten Island">Staten Island</option>
-          </select>
-        </div> */}
+        
+        <h1 className="text-4xl font-bold text-blue mb-8 text-center">Find Your Perfect Apprenticeship</h1>
+        
+        <div className="mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="relative w-full sm:w-96">
+            <input
+              type="text"
+              placeholder="Search apprenticeships..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 rounded-full border-2 border-blue focus:outline-none focus:border-yellow"
+            />
+            <MagnifyingGlassIcon className="absolute left-3 top-2.5 h-5 w-5 text-cerulean" />
+          </div>
+
+          <button
+            onClick={() => setShowFilters(!showFilters)}
+            className="flex items-center px-4 py-2 bg-blue text-white rounded-full hover:bg-indigo transition-colors duration-300"
+          >  
+            <AdjustmentsHorizontalIcon className="h-5 w-5 mr-2" />
+            {showFilters ? 'Hide Filters' : 'Show Filters'}
+          </button>
+        
+        </div>
+
+        {showFilters && (
+          <div className="mb-8 flex flex-wrap gap-4 justify-center">
+            <select
+              value={filters.selectedBorough}
+              name='selectedBorough'
+              onChange={handleFilterChange}
+              className="px-4 py-2 rounded-full border-2 border-cerulean focus:outline-none focus:border-yellow"
+            >
+              <option value="">All Boroughs</option>
+              {boroughs.map(borough => (
+                <option key={borough} value={borough}>{borough}</option>
+              ))}
+            </select>
+            <select
+              value={filters.selectedSalaryRange}
+              name='selectedSalaryRange'
+              onChange={handleFilterChange}
+              className="px-4 py-2 rounded-full border-2 border-cerulean focus:outline-none focus:border-yellow"
+            >
+              <option value="">All Salary Ranges</option>
+              {salaryRanges.map(range => (
+                <option key={range} value={range}>{range}</option>
+              ))}
+            </select>
+          </div>
+        )}
+
+        <div className="flex flex-wrap gap-4 justify-center">
+          {filteredApprenticeships.length === 0 ? (
+            <p className="text-center col-span-full text-lg text-indigo">No apprenticeships found.</p>
+          ) : (
+            filteredApprenticeships.map(apprenticeship => (
+             <ApprenticeshipCard
+             key={apprenticeship.id}
+             apprenticeship={apprenticeship}
+             onApply={()=> navigate(`/employee/individual-apprenticeship-page/${apprenticeship.id}`)}
+             
+             />
+            ))
+          )}
+        </div>
       </div>
-
-      <div className='flex flex-wrap justify-center'>
-    {apprenticeships.length === 0 ? (
-        <p>No apprenticeships found.</p>
-    ) : (
-        filteredTerm.map(apprenticeship => (
-            <div key={apprenticeship.id} className="p-4 border border-gray-300 rounded-lg mb-4 w-80 m-10 shadow-lg ">
-                <h2 className="text-xl font-semibold mb-4  text-blue-700 text-center ">{apprenticeship.title}</h2>
-                <div className='flex mb-2  text-center'>
-                <BuildingOffice2Icon className='w-8 mr-3 text-yellow-500'/> {apprenticeship.apprenticeshipType}
-                </div>
-                <div className='flex mb-2 items-center '>
-                <MapPin className='mr-3 text-yellow-500'/> {apprenticeship.location}
-                </div>
-                <div className='flex mb-2 items-center '>
-                <CurrencyDollarIcon className='w-8 text-yellow-500 mr-3'/>{apprenticeship.salaryRange}
-                </div>
-                    
-
-                {
-                    isEmployee ?
-                    <button
-                        onClick={() => navigate(`/employee/individual-apprenticeship-page/${apprenticeship.id}`)}
-                        className="inline-block mt-2 bg-blue-800 hover:bg-blue-600 text-white px-4 py-2 rounded-full transition-colors duration-200">Apply
-                    </button>
-                    :
-                    <Link
-                        to="/login"
-                        className="inline-block mt-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full transition-colors duration-200">Apply</Link>
-                }
-            </div>
-        ))
-    )}
-</div>
-<div className="text-center mt-12">
-   
-</div>
-
-
-    </>
+    </div>
   );
-};
-
-export default ApprenticeshipSearch;
+}
 
 

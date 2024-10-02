@@ -1,40 +1,34 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { MapPin, DollarSign, Briefcase } from 'lucide-react';
+import { CurrencyDollarIcon, MapPinIcon } from '@heroicons/react/24/outline';
 
-const ApprenticeshipCard = ({ apprenticeshipSearchResults = [] }) => {
+const ApprenticeshipCard = ({ apprenticeship, onApply }) => {
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {apprenticeshipSearchResults.length > 0 ? (
-        apprenticeshipSearchResults.map((apprenticeship) => (
-          <div key={apprenticeship.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="p-6">
-              <h3 className="text-xl font-semibold mb-2">{apprenticeship.title}</h3>
-              <div className="flex items-center mb-2">
-                <MapPin className="text-gray-400 mr-2" size={16} />
-                <span className="text-sm text-gray-500">{apprenticeship.location}</span>
-              </div>
-              <div className="flex items-center mb-2">
-                <DollarSign className="text-gray-400 mr-2" size={16} />
-                <span className="text-sm text-gray-500">{apprenticeship.salary}</span>
-              </div>
-              <div className="flex items-center mb-4">
-                <Briefcase className="text-gray-400 mr-2" size={16} />
-                <span className="text-sm text-gray-500">{apprenticeship.category}</span>
-              </div>
-              <p className="text-gray-600 mb-4">{apprenticeship.description}</p>
-              <Link
-                to={`/apply/${apprenticeship.id}`}
-                className="block w-full bg-[#1C3879] hover:bg-[#2B4F9A] text-white text-center px-4 py-2 rounded transition-colors duration-200"
-              >
-                Apply Now
-              </Link>
+    <div className="bg-white rounded-lg flex shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 border-2 border-yellow w-full sm:w-80 md:w-72 lg:w-80">
+      <div className="w-full p-4 flex flex-col justify-between">
+        <div>
+          <h2 className="text-lg font-semibold mb-2 text-blue">{apprenticeship.title}</h2>
+          <div className="space-y-2">
+            <div className="flex items-center text-blue">
+              <img src={apprenticeship.logoURL} alt={apprenticeship.company} className="w-8 h-8 object-contain rounded-lg mr-2" />
+              <span className="font-semibold">{apprenticeship.company}</span>
+            </div>
+            <div className="flex items-center text-blue">
+              <MapPinIcon className="h-5 w-5 mr-2 text-red" />
+              <span>{apprenticeship.location}</span>
+            </div>
+            <div className="flex items-center text-blue">
+              <CurrencyDollarIcon className="h-5 w-5 mr-2 text-red" />
+              <span>{apprenticeship.salaryRange}</span>
             </div>
           </div>
-        ))
-      ) : (
-        <p className="text-gray-500">No apprenticeships found</p>
-      )}
+        </div>
+        <button
+          onClick={onApply}
+          className="mt-4 w-full bg-blue hover:bg-indigo text-white font-semibold py-2 px-4 rounded-full transition-colors duration-300"
+        >
+          Apply Now
+        </button>
+      </div>
     </div>
   );
 };

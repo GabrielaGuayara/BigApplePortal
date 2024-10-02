@@ -13,9 +13,7 @@ public class UserDTO {
     private Long id;
     private String email;
     private String name;
-    private String phoneNumber;
     private String role; // "ADMIN", "EMPLOYER", "EMPLOYEE"
-    private String summary;
 
     // For employer role
     private List<ApprenticeshipDTO> apprenticeships = new ArrayList<>();

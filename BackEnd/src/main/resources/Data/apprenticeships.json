@@ -1,115 +1,36 @@
 [
   {
     "id": 1,
-    "title": "Web Development Apprentice",
-    "description": "Join our dynamic web development team",
-    "company": "WebWizards",
-    "location": "Brooklyn, NY",
-    "remote": false,
-    "jobCategory": {
-      "id": 1
-    }
-  },
-  {
-    "id": 2,
-    "title": "Business Intelligence Apprentice",
-    "description": "Dive into the world of business intelligence.",
-    "company": "DataInsights",
-    "location": "Queens, NY",
-    "remote": false,
-    "jobCategory": {
+    "title": "Full Stack Developer Apprenticeship",
+    "company": "Tech Co.",
+    "location": "Queens",
+    "description": "Join our team to develop web applications using modern technologies.",
+    "apprenticeshipType": "Full-time",
+    "salaryRange": "$20 - $25 per hour",
+    "educationLevel": "Bachelor's Degree",
+    "requiredSkills": "Java, Spring",
+    "status": "OPEN",
+    "datePosted": "2024-09-01T00:00:00.000+00:00",
+    "logoURL": "https://res.cloudinary.com/df3ggwutz/image/upload/v1727575531/companyOne_olnjmi.jpg",
+    "user": {
       "id": 2
     }
   },
   {
-    "id": 3,
-    "title": "Digital Marketing Apprentice",
-    "description": "Become part of our marketing team and learn how to drive online traffic and engagement.",
-    "company": "MarketMasters",
-    "location": "Manhattan, NY",
-    "remote": false,
-    "jobCategory": {
-      "id": 3
-    }
-  },
-  {
-    "id": 4,
-    "title": "User Experience (UX) Design Apprentice",
-    "description": "Embark on a journey to create exceptional user experiences.",
-    "company": "UXInnovators",
-    "location": "Bronx, NY",
-    "remote": false,
-    "jobCategory": {
-      "id": 4
-    }
-  },
-  {
-    "id": 5,
-    "title": "Network Administration Apprentice",
-    "description": "Get hands-on experience in managing and maintaining.",
-    "company": "NetSolutions",
-    "location": "Staten Island, NY",
-    "remote": false,
-    "jobCategory": {
+    "id": 2,
+    "title": "Cybersecurity Apprenticeship",
+    "company": "Cyber Corp",
+    "location": "Bronx",
+    "description": "Assist in protecting systems from cyber threats.",
+    "apprenticeshipType": "Full-time",
+    "salaryRange": "$18 - $22 per hour",
+    "educationLevel": "Bachelor's Degree",
+    "requiredSkills": "Networking, Security",
+    "status": "OPEN",
+    "datePosted": "2024-09-25T16:59:18.673+00:00",
+    "logoURL": "https://res.cloudinary.com/df3ggwutz/image/upload/v1727575531/CompanyTwo_fq9drh.jpg",
+    "user": {
       "id": 5
-    }
-  },
-  {
-    "id": 6,
-    "title": "Human Resources Recruitment Apprentice",
-    "description": "Learn the ins and outs of recruitment",
-    "company": "TalentAcquisitionCo",
-    "location": "Brooklyn, NY",
-    "remote": false,
-    "jobCategory": {
-      "id": 6
-    }
-  },
-  {
-    "id": 7,
-    "title": "Financial Analysis Apprentice",
-    "description": "Join our finance team to learn the fundamentals of financial.",
-    "company": "FinTechGroup",
-    "location": "Manhattan, NY",
-    "remote": false,
-    "jobCategory": {
-      "id": 7
-    }
-  },
-  {
-    "id": 8,
-    "title": "Content Marketing Apprentice",
-    "description": "Learn how to create strategies.",
-    "company": "ContentMasters",
-    "location": "Queens, NY",
-    "remote": false,
-    "jobCategory": {
-      "id": 8
-    }
-  },
-  {
-    "id": 9,
-    "title": "Sales Operations Apprentice",
-    "description": "Learn the processes and tools that drive sales operations",
-    "company": "SalesGenius",
-    "location": "Bronx, NY",
-    "remote": false,
-    "jobCategory": {
-      "id": 9
-    }
-  },
-  {
-    "id": 10,
-    "title": "Customer Experience Apprentice",
-    "description": "Enhance your understanding of customer service and experience management.",
-    "company": "ServiceExcellence",
-    "location": "Staten Island, NY",
-    "remote": false,
-    "jobCategory": {
-      "id": 10
     }
   }
 ]
-
-
-

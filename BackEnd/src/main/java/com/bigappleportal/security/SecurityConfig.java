@@ -25,31 +25,21 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig {
 
+    //Inject custom service for user details
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 
+    //Inject JWT authentication filter
     @Autowired
     private JWTAuthFilter jwtAuthFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.csrf(AbstractHttpConfigurer::disable)
+        httpSecurity.csrf(AbstractHttpConfigurer::disable) //Disable CSRF protection
                 .cors(Customizer.withDefaults()) // Enable CORS with default settings
                 .authorizeHttpRequests(request -> request
                         //This make endpoints accessible for user registration and login
                         .requestMatchers("/auth/**").permitAll()
-
-                        //This make endpoints accessible for browsing apprenticeships
-                        .requestMatchers("/apprenticeships/public/**").permitAll()
-
-                        // This secured endpoints for employees
-                        .requestMatchers("/employee/**").hasAuthority("EMPLOYEE")
-
-                        // This secured endpoints for employers
-                        .requestMatchers("/employer/**").hasAuthority("EMPLOYER")
-
-                        // This secured endpoints for admins
-                        .requestMatchers("/admin/**").hasAuthority("ADMIN")
 
                         // Any other request needs authentication
                         .anyRequest().authenticated())

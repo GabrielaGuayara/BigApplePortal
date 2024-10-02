@@ -12,6 +12,7 @@ import { Quote } from 'lucide-react'
 const EmployerPage = () => {
   const slides = [imageOne, imageTwo, imageThree]
 
+  //Array of benefits objects to map in the Benefits section and prevent repeatitive code
   const benefits = [
     {
       description: "Recruit and develop a highly-skilled workforce that helps grow their business.",
@@ -30,6 +31,7 @@ const EmployerPage = () => {
     },
   ]
 
+    //Create array of testimonials objects to map in the Testimonials section and prevent repeatitive code
   const testimonials = [
     {
       quote: "Indeed's platform is so easy to use. We've hired about 35-40 people on Indeed in the past two years",

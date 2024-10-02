@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import ApiService from '../../Service/ApiService'; 
 import { DeleteIcon } from 'lucide-react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ViewAllUsers = () => {
+
+    //State to hold the list of users and the filtered role
     const [users, setUsers] = useState([]);
-    const [errorMessage, setErrorMessage] = useState('');
     const [filteredRole, setFilteredRole] = useState(''); 
 
+
+    //UseEffect to fetch users when the component mounts. Call an API to getAllUsers
     useEffect(() => {
         const fetchUsers = async () => {
             try {
                 const data = await ApiService.getAllUsers();
-                console.log(data.userList)
                 setUsers(data.userList);
             } catch (error) {
                console.error(error)
@@ -21,6 +25,9 @@ const ViewAllUsers = () => {
         fetchUsers();
     }, []);
 
+    
+    //Funtion to handle the user deletion. Call API from ApiServices to delete the user and
+    //update state using filtering to remove deleted user
     const handleDelete = async (userId) => {
         try {
             await ApiService.deleteUser(userId)
@@ -37,11 +44,12 @@ const ViewAllUsers = () => {
 
 
     return (
-        <div>
-            {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+        <div >
+            {/* Toasty component to add notifications */}
+            <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} />
+
             <h2 className="text-l font-semibold mb-4">All Users</h2>
 
-            {/* Role filter dropdown */}
             <div className="mb-4">
                 <label className="mr-2">Filter by Role:</label>
                 <select
@@ -56,9 +64,9 @@ const ViewAllUsers = () => {
                 </select>
             </div>
 
-            <table className="min-w-full border-collapse border border-gray-400 bg-gray-100 text-center p-6">
+            <table className="w-1/2 border-collapse border border-gray-400 bg-cream text-center p-6 m-auto">
                 <thead>
-                    <tr>
+                    <tr className='bg-indigo text-white'>
                         <th className="border border-gray-300 px-4 py-2">ID</th>
                         <th className="border border-gray-300 px-4 py-2">Email</th>
                         <th className="border border-gray-300 px-4 py-2">Role</th>
@@ -71,13 +79,13 @@ const ViewAllUsers = () => {
                     :(
                     filteredUsers.map((user) => (
                         <tr key={user.id} >
-                            <td className="border border-gray-300 px-4 py-2">{user.id}</td>
+                            <td className="border border-gray-300 px-4 py-2 font-bold">{user.id}</td>
                             <td className="border border-gray-300 px-4 py-2">{user.email}</td>
                             <td className="border border-gray-300 px-4 py-2">{user.role}</td>
                             <td className='border border-gray-300 flex  justify-center'>
                             <button
                                 onClick={() => handleDelete(user.id)}
-                                className="text-white hover:underline m-4 btn bg-red-500 border border-gray-300 px-4 py-2 rounded flex  "
+                                className="text-white hover:underline m-4 btn bg-red border border-gray-300 px-4 py-2 rounded flex  "
                             >
                                Delete<DeleteIcon className='ml-3'/> 
                             </button>

@@ -5,8 +5,13 @@ import CarouselImage2 from "../../images/CarouselImage2.jpg"
 import AddNewAdminForm from './AddNewAdminForm';
 
 export default function AdminDashboard() {
+ //Grab the name from the local storage
+  const name = localStorage.getItem('name')
+
+  //useState to manage the state of the activeComponent that will be rendered
   const [activeComponent, setActiveComponent] = useState('Welcome');
 
+  //Function to manage the state of the active component that will be rendered base on the activeComponent state
   const renderComponent = () => {
     switch (activeComponent) {
       case 'addAdmin':
@@ -16,7 +21,8 @@ export default function AdminDashboard() {
       default:
         return (
           <div className="text-center">
-            <h2 className="text-4xl font-bold text-blue-600 mb-4">Welcome to Admin Dashboard</h2>
+            <h2 className="text-4xl font-bold text-blue-600 mb-4">Welcome!</h2>
+            <h2 className="text-4xl font-bold text-blue-600 mb-4">{name}</h2>
             <p className="text-xl text-yellow-600">Select an option from the sidebar to get started.</p>
           </div>
         );
@@ -24,7 +30,8 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-screen bg-gray-100">
+    <div className="flex flex-col md:flex-row min-h-screen bg-gray-100">
+      {/* Passing activeComponent and activiveCompenents as props to sideDashboard */}
       <SidebarDashboard setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
       <div className="flex-1 p-4 md:p-8 overflow-y-auto">
         <div 

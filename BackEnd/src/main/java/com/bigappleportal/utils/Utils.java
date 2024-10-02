@@ -25,19 +25,11 @@ public class Utils {
         userDTO.setId(user.getId());
         userDTO.setName(user.getName());
         userDTO.setEmail(user.getEmail());
-        userDTO.setPhoneNumber(user.getPhoneNumber());
         userDTO.setRole(user.getRole());
-        userDTO.setSummary(user.getSummary());
         List<ApprenticeshipDTO> apprenticeshipDTOs = user.getApprenticeships().stream()
                 .map(Utils::mapApprenticeshipEntityToApprenticeshipDTO)
                 .collect(Collectors.toList());
         userDTO.setApprenticeships(apprenticeshipDTOs);
-
-        // Map applications
-//        List<ApplicationDTO> applicationDTOs = user.getApplications().stream()
-//                .map(Utils::mapApplicationEntityToApplicationDTO)
-//                .collect(Collectors.toList());
-//        userDTO.setApplications(applicationDTOs);
 
         return userDTO;
 
@@ -55,7 +47,11 @@ public class Utils {
         apprenticeshipDTO.setLocation(apprenticeship.getLocation());
         apprenticeshipDTO.setStatus(apprenticeship.getStatus());
         apprenticeshipDTO.setDatePosted(apprenticeship.getDatePosted());
-        apprenticeshipDTO.setExperienceLevel(apprenticeship.getExperienceLevel());
+        apprenticeshipDTO.setEducationLevel(apprenticeship.getEducationLevel());
+        apprenticeshipDTO.setLogoURL(apprenticeship.getLogoURL());
+        apprenticeshipDTO.setRequiredSkills(apprenticeship.getRequiredSkills());
+
+        //Convert applications associated with the apprenticeshio into DTOs
         List<ApplicationDTO> applicationDTOs = apprenticeship.getApplications().stream()
                 .map(Utils::mapApplicationEntityToApplicationDTO)
                 .collect(Collectors.toList());
@@ -68,7 +64,7 @@ public class Utils {
         ApplicationDTO applicationDTO = new ApplicationDTO();
         applicationDTO.setId(application.getId());
         applicationDTO.setDateApplied(application.getDateApplied());
-        applicationDTO.setApplicationStatus(application.getStatus());
+        applicationDTO.setApplicationStatus(application.getStatusApplication());
         applicationDTO.setUser(mapUserEntityToUserDTO(application.getUser()));
 
         return applicationDTO;
@@ -123,14 +119,16 @@ public class Utils {
         Apprenticeship apprenticeship = new Apprenticeship();
 
         apprenticeship.setTitle(apprenticeshipDTO.getTitle());
+        apprenticeship.setCompany(apprenticeshipDTO.getCompany());
         apprenticeship.setLocation(apprenticeshipDTO.getLocation());
         apprenticeship.setDescription(apprenticeshipDTO.getDescription());
         apprenticeship.setApprenticeshipType(apprenticeshipDTO.getApprenticeshipType());
         apprenticeship.setSalaryRange(apprenticeshipDTO.getSalaryRange());
-        apprenticeship.setExperienceLevel(apprenticeshipDTO.getExperienceLevel());
+        apprenticeship.setEducationLevel(apprenticeshipDTO.getEducationLevel());
         apprenticeship.setRequiredSkills(apprenticeshipDTO.getRequiredSkills());
         apprenticeship.setStatus(apprenticeshipDTO.getStatus());
         apprenticeship.setDatePosted(apprenticeshipDTO.getDatePosted());
+        apprenticeship.setLogoURL(apprenticeshipDTO.getLogoURL());
 
         return apprenticeship;
     }

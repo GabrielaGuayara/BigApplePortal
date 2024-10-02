@@ -20,20 +20,25 @@ public class Apprenticeship {
     private String title;
     private String company;
     private String location;
+
+    @Column(length = 65555)
     private String description;
     private String apprenticeshipType;
     private String salaryRange;
-    private String experienceLevel;
+    private String educationLevel;
     private String requiredSkills;
     private String status; // OPEN, CLOSED, FILLED
     private Date datePosted;
+
+    @Column(length = 65555)
+    private String logoURL;
 
 
     @OneToMany(mappedBy = "apprenticeship", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Application> applications = new ArrayList<>();
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
 

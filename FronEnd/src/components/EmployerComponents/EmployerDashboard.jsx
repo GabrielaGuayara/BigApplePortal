@@ -25,11 +25,11 @@ export default function EmployerDashboard() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-screen bg-gray-100">
+    <div className="flex flex-col md:flex-row min-h-screen bg-gray-100">
     <EmployerSidebar setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
     <div className="flex-1 p-4 md:p-8 overflow-y-auto">
       <div 
-        className="bg-white rounded-lg shadow-lg p-6 md:p-8 h-full"
+        className="bg-indigo rounded-lg shadow-lg p-6 md:p-8 h-full"
         style={{
           backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(${CarouselImage2})`,
           backgroundSize: 'cover',

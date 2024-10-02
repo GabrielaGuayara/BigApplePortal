@@ -29,7 +29,7 @@ export default class ApiService {
     
             if (!response.ok) {
                 const errorData = await response.json(); // Get the error details from the response
-                throw new Error(errorData.message || 'Failed to register');
+                throw new Error( 'Failed to register');
             }
     
             const data =  await response.json()
@@ -115,7 +115,7 @@ export default class ApiService {
     }
 
     // This gets a single user
-    static async getUser(userId) {
+    static async getUser() {
         const response = await fetch(`${this.BASE_URL}/users/get-by-id/${userId}`, {
             headers: this.getHeader()
         });
@@ -158,6 +158,7 @@ export default class ApiService {
 
     // This deletes a user
     static async deleteUser(userId) {
+
         const response = await fetch(`${this.BASE_URL}/users/delete/${userId}`, {
             method: 'DELETE',
             headers: this.getHeader()
@@ -189,8 +190,48 @@ export default class ApiService {
         return data;
     }
 
+  
+     static  async createUserProfile (userId, profileData) {
+
+        const  response = await fetch(`${this.BASE_URL}/user-profile/create/${userId}`, {
+                method: 'POST',
+                headers: this.getHeader(),
+                body: JSON.stringify(profileData),
+            })
+
+           return await response.json();
+        }
 
     
+    static async viewUserProfile(userId){
+                const response = await fetch(`${this.BASE_URL}/user-profile/view/${userId}`, {
+                    method: 'GET',
+                    headers: this.getHeader()
+                });
+                
+                return await response.json()
+        }
+
+     
+        
+    static async updateUserProfile(userId, profile){    
+       const response = await fetch(`${this.BASE_URL}/user-profile/update/${userId}`, {
+                method: 'PUT',
+                headers: this.getHeader(),
+                body: JSON.stringify({
+                    ...profile,
+                    skills: profile.skills.split(',').map(skill => skill.trim()),
+                }),
+            }
+            
+        );
+           
+           return await response.json();
+
+        }
+
+
+      
     
 
 
@@ -206,16 +247,10 @@ export default class ApiService {
 
     // This gets an apprenticeship by ID
     static async getApprenticeshipById(apprenticeshipId) {
-        const result = await fetch(`${this.BASE_URL}/apprenticeships/get-by-id/${apprenticeshipId}`, {
+        const response = await fetch(`${this.BASE_URL}/apprenticeships/get-by-id/${apprenticeshipId}`, {
             headers: this.getHeader()
-        });
-
-        if (!result.ok) {
-            throw new Error('Failed to fetch apprenticeship');
-        }
-
-        const data = await result.json(); 
-        return data;
+            });
+          return  await response.json();
     }
 
 
@@ -225,14 +260,15 @@ export default class ApiService {
     //Get all apprenticeships for a specific user 
    
     static async addApprenticeship(userId, apprenticeshipData) {
+
         console.log(userId);
         const response = await fetch(`${this.BASE_URL}/apprenticeships/post-apprenticeship/${userId}`, {
             method: 'POST',
             headers: {
-                ...this.getHeader(), // Ensure your headers include Content-Type for JSON
+                ...this.getHeader(),
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(apprenticeshipData), // Send the apprenticeship data
+            body: JSON.stringify(apprenticeshipData),
         });
     
         if (!response.ok) {
@@ -242,7 +278,9 @@ export default class ApiService {
         return await response.json();
     }
     static async getAllApprenticeshipsByUser(userId)
-     { const response = await fetch(`${this.BASE_URL}/apprenticeships/${userId}/all`, { method: 'GET', headers: this.getHeader(), });
+
+     { 
+        const response = await fetch(`${this.BASE_URL}/apprenticeships/${userId}/all`, { method: 'GET', headers: this.getHeader(), });
       if (!response.ok) { throw new Error('Failed to fetch apprenticeships'); }
       
       return await response.json(); 
@@ -252,6 +290,7 @@ export default class ApiService {
     
     
     static async updateApprenticeship(apprenticeshipId, apprenticeshipData) {
+        
         const userId = localStorage.getItem('id'); // Get userId from local storage
         const response = await fetch(`${this.BASE_URL}/apprenticeships/update-by-id/${userId}/${apprenticeshipId}`, {
             method: 'PUT',
@@ -292,19 +331,21 @@ export default class ApiService {
 
 
         static async applyForApprenticeship(userId, apprenticeshipId) {
-            const response = await fetch(`http://localhost:8080/applications/apply/${userId}/${apprenticeshipId}`, {
+            console.log(apprenticeshipId)
+            const response = await fetch(`${this.BASE_URL}/applications/apply/${userId}/${apprenticeshipId}`, {
                 method: 'POST',
                 headers: this.getHeader(),
             });
     
-            return response;
+            console.log(response)
+            return await response.json();
         }
 
     
 
 
     static async getApplicationsByUserId(userId) {
-        const response = await fetch(`${this.BASE_URL}/applications/user/${userId}`, {
+        const response = await fetch(`${this.BASE_URL}/applications/view/${userId}/all`, {
             headers: this.getHeader(),
         });
 
@@ -314,9 +355,12 @@ export default class ApiService {
         }
 
 
-        const applications = await response.json();
-        return applications;
+       return await response.json();
+     
     }
+
+
+   
 
 
 

@@ -1,160 +1,200 @@
 import React, { useState } from 'react';
 import ApiService from '../../Service/ApiService';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const AddApprenticeship = () => {
-    const [title, setTitle] = useState('');
-    const [location, setLocation] = useState('');
-    const [company, setCompany] = useState('');
-    const [description, setDescription] = useState('');
-    const [apprenticeshipType, setApprenticeshipType] = useState('');
-    const [salaryRange, setSalaryRange] = useState('');
-    const [experienceLevel, setExperienceLevel] = useState('');
-    const [requiredSkills, setRequiredSkills] = useState('');
-    const [error, setError] = useState(null);
-    const [success, setSuccess] = useState(null);
+
+    //Holds all input values in a single formData object
+    const [formData, setFormData] = useState({
+        title: '',
+        location: '',
+        company: '',
+        description: '',
+        apprenticeshipType: '',
+        salaryRange: '',
+        educationLevel: '',
+        requiredSkills: '',
+        logoURL: null,
+    });
+
+    
+    //Function to handle user picture profile
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setFormData({ ...formData, logoURL: reader.result });
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    //Function to update formData
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const userId = localStorage.getItem('id');
-        console.log(userId);
 
         const apprenticeshipData = {
-            title,
-            company,
-            location,
-            description,
-            apprenticeshipType,
-            salaryRange,
-            experienceLevel,
-            requiredSkills,
+            ...formData,
             status: 'OPEN',
-            datePosted: new Date(), 
+            datePosted: new Date().toISOString(),
+            userId,
         };
 
         try {
-            // Pass userId and apprenticeshipData to the API call
-            await ApiService.addApprenticeship(userId, apprenticeshipData);
-            setSuccess('Apprenticeship added successfully!');
+           const response =  await ApiService.addApprenticeship(userId, apprenticeshipData);
+            console.log(response);
+           toast.success('Apprenticeship added successfully!');
 
             // Clear the form
-            setTitle('');
-            setCompany('');
-            setLocation('');
-            setDescription('');
-            setApprenticeshipType('');
-            setSalaryRange('');
-            setExperienceLevel('');
-            setRequiredSkills('');
+            setFormData({
+                title: '',
+                location: '',
+                company: '',
+                description: '',
+                apprenticeshipType: '',
+                salaryRange: '',
+                educationLevel: '',
+                requiredSkills: '',
+                logoURL: null,
+            });
         } catch (error) {
-            setError(error.response?.data?.message || error.message);
+           console.error(error);
         }
     };
 
     return (
-        <div className="mx-auto p-6 bg-white rounded-lg shadow-md w-100">
-           <h2 className="text-xl font-bold mb-4">Add New Apprenticeship</h2>
-            {error && <div className="text-red-500 mb-4">{error}</div>}
-            {success && <div className="text-green-500 mb-4">{success}</div>}
+        <div className="mx-auto p-4 bg-white rounded-lg shadow-md max-w-md w-full">
+            <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} />
+
+            <h2 className="text-lg font-bold mb-4 text-blue">Fill out this form to add a new apprenticeship</h2>
            
             <form onSubmit={handleSubmit}>
-
-                <div className="mb-4">
+                <div className="mb-3">
                     <label className="block text-sm font-medium text-gray-700">Title</label>
                     <input
                         type="text"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
+                        name="title"
+                        value={formData.title}
+                        onChange={handleChange}
                         required
                         className="mt-1 p-2 border border-gray-300 rounded w-full"
                     />
                 </div>
-                <div className="mb-4">
+                <div className="mb-3">
                     <label className="block text-sm font-medium text-gray-700">Company</label>
                     <input
                         type="text"
-                        value={company}
-                        onChange={(e) => setCompany(e.target.value)}
+                        name="company"
+                        value={formData.company}
+                        onChange={handleChange}
                         required
                         className="mt-1 p-2 border border-gray-300 rounded w-full"
                     />
                 </div>
-                <div className="mb-4">
+                <div className="mb-3">
                     <label className="block text-sm font-medium text-gray-700">Location</label>
-                    <input
-                        type="text"
-                        value={location}
-                        onChange={(e) => setLocation(e.target.value)}
+                    <select
+                        name="location"
+                        value={formData.location}
+                        onChange={handleChange}
                         required
                         className="mt-1 p-2 border border-gray-300 rounded w-full"
-                    />
+                    >
+                        <option value="">Select a Borough</option>
+                        <option value="Manhattan">Manhattan</option>
+                        <option value="Brooklyn">Brooklyn</option>
+                        <option value="Queens">Queens</option>
+                        <option value="Bronx">Bronx</option>
+                        <option value="Staten Island">Staten Island</option>
+                    </select>
                 </div>
-                <div className="mb-4">
+                <div className="mb-3">
                     <label className="block text-sm font-medium text-gray-700">Description</label>
                     <textarea
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
+                        name="description"
+                        value={formData.description}
+                        onChange={handleChange}
                         required
                         className="mt-1 p-2 border border-gray-300 rounded w-full"
                     />
                 </div>
-                <div className="mb-4">
+                <div className="mb-3">
                     <label className="block text-sm font-medium text-gray-700">Apprenticeship Type</label>
                     <input
                         type="text"
-                        value={apprenticeshipType}
-                        onChange={(e) => setApprenticeshipType(e.target.value)}
+                        name="apprenticeshipType"
+                        value={formData.apprenticeshipType}
+                        onChange={handleChange}
                         required
                         className="mt-1 p-2 border border-gray-300 rounded w-full"
                     />
                 </div>
-                <div className="mb-4">
+                <div className="mb-3">
                     <label className="block text-sm font-medium text-gray-700">Salary Range</label>
                     <input
                         type="text"
-                        value={salaryRange}
-                        onChange={(e) => setSalaryRange(e.target.value)}
+                        name="salaryRange"
+                        value={formData.salaryRange}
+                        onChange={handleChange}
                         required
                         className="mt-1 p-2 border border-gray-300 rounded w-full"
                     />
                 </div>
-                <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700">Experience Level</label>
-                    <input
-                        type="text"
-                        value={experienceLevel}
-                        onChange={(e) => setExperienceLevel(e.target.value)}
+                <div className="mb-3">
+                    <label className="block text-sm font-medium text-gray-700">Education Level</label>
+                    <select
+                        name="educationLevel"
+                        value={formData.educationLevel}
+                        onChange={handleChange}
                         required
                         className="mt-1 p-2 border border-gray-300 rounded w-full"
-                    />
+                    >
+                        <option value="">Select Education Level</option>
+                        <option value="High School">High School</option>
+                        <option value="Associate">Associate</option>
+                        <option value="Bachelor">Bachelor</option>
+                    </select>
                 </div>
-                <div className="mb-4">
+                <div className="mb-3">
                     <label className="block text-sm font-medium text-gray-700">Required Skills</label>
                     <input
                         type="text"
-                        value={requiredSkills}
-                        onChange={(e) => setRequiredSkills(e.target.value)}
+                        name="requiredSkills"
+                        value={formData.requiredSkills}
+                        onChange={handleChange}
                         required
                         className="mt-1 p-2 border border-gray-300 rounded w-full"
                     />
                 </div>
-               
+                <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-700">Company Image</label>
+                    <input
+                        type="file"
+                        onChange={handleImageChange}
+                        className="mt-1 p-2 border border-gray-300 rounded w-full"
+                    />
+                </div>
+
                 <button
                     type="submit"
-                    className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+                    className="w-full bg-blue text-white p-2 rounded hover:bg-blue-600 transition duration-200"
                 >
                     Add Apprenticeship
                 </button>
             </form>
-           </div>
+        </div>
     );
 };
 
-
 export default AddApprenticeship;
-
-
-
-
-
 
 

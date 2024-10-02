@@ -1,2 +1,4 @@
-package com.bigappleportal;public class ApplicationServiceTest {
+package com.bigappleportal;
+
+public class ApplicationServiceTest {
 }

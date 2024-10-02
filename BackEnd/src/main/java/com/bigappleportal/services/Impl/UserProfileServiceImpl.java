@@ -1,12 +1,16 @@
 package com.bigappleportal.services.Impl;
 
-import com.bigappleportal.dto.ApprenticeshipDTO;
-import com.bigappleportal.dto.UserProfileDTO;
+import com.bigappleportal.dto.*;
+import com.bigappleportal.model.Application;
 import com.bigappleportal.model.Apprenticeship;
 import com.bigappleportal.model.User;
 import com.bigappleportal.model.UserProfile;
 import com.bigappleportal.repositories.ApprenticeshipRepository;
 import com.bigappleportal.repositories.UserProfileRepository;
+import com.bigappleportal.repositories.UserRepository;
+import com.bigappleportal.services.interfaces.IUserProfileService;
+import com.bigappleportal.utils.Utils;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,64 +18,200 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class UserProfileService {
+public class UserProfileServiceImpl implements IUserProfileService {
 
     @Autowired
     private UserProfileRepository userProfileRepository;
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private ApprenticeshipRepository apprenticeshipRepository;
 
-    public UserProfileDTO createOrUpdateProfile(UserProfileDTO profileDTO, Long userId) {
-        UserProfile userProfile = userProfileRepository.findByUserId(userId)
-                .orElse(new UserProfile());
+    @Override
+    public Response createUserProfile(Long userId, UserProfileDTO userProfileDTO) {
+        Response response = new Response();
 
-        userProfile.setUser(new User(userId));
-        userProfile.setSkills(profileDTO.getSkills());
-        userProfile.setExperience(profileDTO.getExperience());
-        userProfile.setInterests(profileDTO.getInterests());
-        userProfile.setPhoneNumber(profileDTO.getPhoneNumber());
-        userProfile.setAddress(profileDTO.getAddress());
-        userProfile.setSummary(profileDTO.getSummary());
+        try {
+            User user = userRepository.findById(userId)
+                    .orElseThrow(() -> new EntityNotFoundException("User not found"));
 
-        userProfile = userProfileRepository.save(userProfile);
+            UserProfile userProfile = new UserProfile();
+            userProfile.setUser(user);
+            userProfile.setPhoneNumber(userProfileDTO.getPhoneNumber());
+            userProfile.setSummary(userProfileDTO.getSummary());
+            userProfile.setSkills(userProfileDTO.getSkills());
+            userProfile.setEducationLevel(userProfileDTO.getEducationLevel());
+            userProfile.setPictureURL(userProfileDTO.getPictureURL());
+            userProfile.setPreferredType(userProfile.getPreferredType());
+            userProfile.setPictureURL(userProfile.getPictureURL());
+            userProfileRepository.save(userProfile);
 
-        return mapToDTO(userProfile);
+            response.setStatusCode(200);
+            response.setMessage("User profile created successfully");
+            response.setUser(mapToUserDTO(user));
+        } catch (Exception e) {
+            response.setStatusCode(500);
+            response.setMessage("Error creating user profile: " + e.getMessage());
+        }
+
+        return response;
     }
 
-    private UserProfileDTO mapToDTO(UserProfile userProfile) {
-        UserProfileDTO dto = new UserProfileDTO();
-        dto.setId(userProfile.getId());
-        dto.setUserId(userProfile.getUser().getId());
-        dto.setSkills(userProfile.getSkills());
-        dto.setEducation(userProfile.getEducation());
-        dto.setExperience(userProfile.getExperience());
-        dto.setLocation(userProfile.getLocation());
-        dto.setInterests(userProfile.getInterests());
-        return dto;
+    @Override
+    public Response updateUserProfile(Long userId, UserProfileDTO userProfileDTO) {
+        Response response = new Response();
+
+        try {
+            UserProfile userProfile = userProfileRepository.findByUserId(userId)
+                    .orElseThrow(() -> new EntityNotFoundException("User profile not found"));
+
+            userProfile.setPhoneNumber(userProfileDTO.getPhoneNumber());
+            userProfile.setLocation(userProfileDTO.getLocation());
+            userProfile.setPreferredType(userProfileDTO.getPreferredType());
+            userProfile.setEducationLevel(userProfileDTO.getEducationLevel());
+            userProfile.setSummary(userProfileDTO.getSummary());
+            userProfile.setSkills(userProfileDTO.getSkills());
+            userProfile.setPictureURL(userProfileDTO.getPictureURL());
+
+            userProfileRepository.save(userProfile);
+
+            response.setStatusCode(200);
+            response.setMessage("User profile updated successfully");
+        } catch (Exception e) {
+            response.setStatusCode(500);
+            response.setMessage("Error updating user profile: " + e.getMessage());
+        }
+
+        return response;
     }
 
-    public List<ApprenticeshipDTO> getSuggestedApprenticeships(Long userId) {
-        UserProfile userProfile = userProfileRepository.findByUserId(userId)
-                .orElseThrow(() -> new RuntimeException("User profile not found"));
+    @Override
+    public Response deleteUserProfile(Long userId) {
+        Response response = new Response();
 
-        // Fetch apprenticeships based on user profile (e.g., skills, location, etc.)
-        List<Apprenticeship> apprenticeships = apprenticeshipRepository
-                .findByCriteria(userProfile.getSkills(), userProfile.getLocation());
+        try {
+            UserProfile userProfile = userProfileRepository.findByUserId(userId)
+                    .orElseThrow(() -> new EntityNotFoundException("User profile not found"));
 
-        return apprenticeships.stream().map(this::mapToDTO).collect(Collectors.toList());
+            userProfileRepository.delete(userProfile);
+
+            response.setStatusCode(200);
+            response.setMessage("User profile deleted successfully");
+        } catch (Exception e) {
+            response.setStatusCode(500);
+            response.setMessage("Error deleting user profile: " + e.getMessage());
+        }
+
+        return response;
     }
 
-    public ApprenticeshipDTO mapToDTO(Apprenticeship apprenticeship) {
+    @Override
+    public Response getUserProfile(Long userId) {
+        Response response = new Response();
+
+        try {
+            UserProfile userProfile = userProfileRepository.findByUserId(userId)
+                    .orElseThrow(() -> new EntityNotFoundException("User profile not found"));
+
+            response.setStatusCode(200);
+            response.setMessage("User profile retrieved successfully");
+            response.setUserProfile(mapToDTO(userProfile));
+        } catch (Exception e) {
+            response.setStatusCode(500);
+            response.setMessage("Error retrieving user profile: " + e.getMessage());
+        }
+
+        return response;
+    }
+
+//    @Override
+//    public Response suggestApprenticeships(Long userId) {
+//        Response response = new Response();
+//
+//        try {
+//            UserProfile userProfile = userProfileRepository.findByUserId(userId)
+//                    .orElseThrow(() -> new EntityNotFoundException("User profile not found"));
+//
+//            List<Apprenticeship> suggestedApprenticeships =apprenticeshipRepository
+//                    .findByCriteria(userProfile.getSkills(), userProfile.getInterests(), userProfile.getLocation());
+//
+//            response.setStatusCode(200);
+//            response.setMessage("Apprenticeship suggestions retrieved successfully");
+//            response.setApprenticeships(suggestedApprenticeships.stream()
+//                    .map(this::mapToDTO)
+//                    .collect(Collectors.toList()));
+//        } catch (Exception e) {
+//            response.setStatusCode(500);
+//            response.setMessage("Error retrieving apprenticeship suggestions: " + e.getMessage());
+//        }
+//
+//        return response;
+//    }
+
+    private UserDTO mapToUserDTO(User user) {
+        UserDTO userDTO = new UserDTO();
+        userDTO.setId(user.getId());
+        userDTO.setEmail(user.getEmail());
+        userDTO.setName(user.getName());
+        userDTO.setRole(user.getRole());
+        // Assuming you want to include other fields like applications and apprenticeships if necessary
+        userDTO.setApplications(
+                user.getApplications().stream()
+                        .map(this::mapToApplicationDTO)
+                        .collect(Collectors.toList())
+        );
+        userDTO.setApprenticeships(
+                user.getApprenticeships().stream()
+                        .map(this::mapToDTO)
+                        .collect(Collectors.toList())
+        );
+        return userDTO;
+    }
+
+    private ApplicationDTO mapToApplicationDTO(Application application) {
+        ApplicationDTO applicationDTO = new ApplicationDTO();
+        applicationDTO.setId(application.getId());
+        applicationDTO.setApplicationStatus(application.getStatusApplication());
+        // Map other relevant fields from Application entity to ApplicationDTO
+        return applicationDTO;
+    }
+
+
+    private ApprenticeshipDTO mapToDTO(Apprenticeship apprenticeship) {
         ApprenticeshipDTO apprenticeshipDTO = new ApprenticeshipDTO();
         apprenticeshipDTO.setId(apprenticeship.getId());
         apprenticeshipDTO.setTitle(apprenticeship.getTitle());
+        apprenticeshipDTO.setCompany(apprenticeship.getCompany());
         apprenticeshipDTO.setDescription(apprenticeship.getDescription());
-
+        apprenticeshipDTO.setApprenticeshipType(apprenticeship.getApprenticeshipType());
+        apprenticeshipDTO.setSalaryRange(apprenticeship.getSalaryRange());
         apprenticeshipDTO.setLocation(apprenticeship.getLocation());
-        apprenticeshipDTO.setRequiredSkills(apprenticeship.getRequiredSkills()); // Assuming skills are a list/array apprenticeshipDTO.setDuration(apprenticeship.getDuration()); apprenticeshipDTO.setEmployerName(apprenticeship.getUser().getName()); // Linking user to apprenticeship return apprenticeshipDTO; }
-
+        apprenticeshipDTO.setStatus(apprenticeship.getStatus());
+        apprenticeshipDTO.setDatePosted(apprenticeship.getDatePosted());
+        apprenticeshipDTO.setEducationLevel(apprenticeship.getEducationLevel());
+        List<ApplicationDTO> applicationDTOs = apprenticeship.getApplications().stream()
+                .map(Utils::mapApplicationEntityToApplicationDTO)
+                .collect(Collectors.toList());
+        apprenticeshipDTO.setApplications(applicationDTOs);
         return apprenticeshipDTO;
     }
 
+    private UserProfileDTO mapToDTO(UserProfile userProfile) {
+        UserProfileDTO userProfileDTO = new UserProfileDTO();
+        userProfileDTO.setId(userProfile.getId());
+        userProfileDTO.setPhoneNumber(userProfile.getPhoneNumber());
+        userProfileDTO.setPreferredType(userProfile.getPreferredType());
+        userProfileDTO.setSummary(userProfile.getSummary());
+        userProfileDTO.setSkills(userProfile.getSkills());  // Assuming this is a list/array
+        userProfileDTO.setEducationLevel(userProfile.getEducationLevel());  // Assuming this is a list/array
+        userProfileDTO.setPictureURL(userProfile.getPictureURL());
+        return userProfileDTO;
+    }
+
+
+
 }
+
+

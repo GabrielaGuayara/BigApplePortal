@@ -16,31 +16,41 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+//Implement IUserService interface for user-related operations
 @Service
 public class UserServiceImpl implements IUserService {
 
+    //Inject userRepository for user data access
     @Autowired
     private UserRepository userRepository;
 
+    //Encoder for hashing passwords
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    //Utility for JWT operations
     @Autowired
     private JWTUtils jwtUtils;
 
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    //Method for user registration
     @Override
     public Response register(User user) {
         Response response = new Response();
         try {
+            //Set default role if not provided
             if (user.getRole() == null || user.getRole().isBlank()) {
                 user.setRole("USER");
             }
+
+            //Check if the email already exits
             if (userRepository.existsByEmail(user.getEmail())) {
                 throw new OurException(user.getEmail() + " Already Exists");
             }
+
+            //Encode the password before saving
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             User savedUser = userRepository.save(user);
             UserDTO userDTO = Utils.mapUserEntityToUserDTO(savedUser);
@@ -56,12 +66,15 @@ public class UserServiceImpl implements IUserService {
         return response;
     }
 
+    //Method for user login
     @Override
     public Response login(LoginRequest loginRequest) {
         Response response = new Response();
         try {
+            //Authenticated user credentials
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
             var user = userRepository.findByEmail(loginRequest.getEmail()).orElseThrow(() -> new OurException("User Not Found"));
+            //Here is where the token get generated
             var token = jwtUtils.generateToken(user);
             response.setStatusCode(200);
             response.setToken(token);
@@ -81,6 +94,7 @@ public class UserServiceImpl implements IUserService {
         return response;
     }
 
+    //Method to get all the users
     @Override
     public Response getAllUsers() {
         Response response = new Response();
@@ -97,6 +111,7 @@ public class UserServiceImpl implements IUserService {
         return response;
     }
 
+    //Method to add a new admin
     @Override
     public Response addAdmin(AdminRequest adminRequest) {
         Response response = new Response();
@@ -140,6 +155,7 @@ public class UserServiceImpl implements IUserService {
     }
 
 
+    //Method to update user details
     @Override
     public Response updateUser(Long userId, EmployeeDTO employeeDTO) {
         Response response = new Response();
@@ -150,8 +166,7 @@ public class UserServiceImpl implements IUserService {
             // Update user details
             user.setName(employeeDTO.getName());
             user.setEmail(employeeDTO.getEmail());
-            user.setPhoneNumber(employeeDTO.getPhoneNumber());
-            user.setSummary(employeeDTO.getSummary());
+
 
             User updatedUser = userRepository.save(user);
             UserDTO userDTO = Utils.mapUserEntityToUserDTO(updatedUser);
@@ -169,6 +184,7 @@ public class UserServiceImpl implements IUserService {
         return response;
     }
 
+    //Method to get user's application history
     @Override
     public Response getApplicationHistory(String userId) {
         Response response = new Response();
@@ -188,6 +204,7 @@ public class UserServiceImpl implements IUserService {
         return response;
     }
 
+    //Method to delete a user
     @Override
     public Response deleteUser(String userId) {
         Response response = new Response();
@@ -206,6 +223,7 @@ public class UserServiceImpl implements IUserService {
         return response;
     }
 
+    //Method to get user by ID
     @Override
     public Response getUserById(String userId) {
         Response response = new Response();

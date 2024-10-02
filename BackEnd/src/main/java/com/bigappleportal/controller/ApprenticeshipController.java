@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/apprenticeships")
 public class ApprenticeshipController {
@@ -88,6 +90,15 @@ public class ApprenticeshipController {
         return ResponseEntity.status(response.getStatusCode()).body(response);
 
     }
+
+    @GetMapping("/suggested/{userId}")
+    @PreAuthorize("hasAuthority('EMPLOYEE')")
+    public ResponseEntity<Response> suggestApprenticeships(@PathVariable Long userId) {
+        Response response = apprenticeshipService.suggestApprenticeships(userId);
+        return ResponseEntity.status(response.getStatusCode()).body(response);
+    }
+
 }
+
 
 

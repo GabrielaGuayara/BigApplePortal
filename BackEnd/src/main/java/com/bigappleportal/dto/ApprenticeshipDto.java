@@ -19,11 +19,18 @@ public class ApprenticeshipDTO {
     private String description;
     private String apprenticeshipType;
     private String salaryRange;
-    private String experienceLevel;
+    private String educationLevel;
     private String requiredSkills;
     private String status;
     private Date datePosted;
+    private String logoURL;
+
+
     private UserDTO user;
     private List<ApplicationDTO> applications = new ArrayList<>();
+
+
+
+
 
 }

@@ -20,17 +20,16 @@ public class Application {
     private Date dateApplied;
 
     @NotBlank(message = "Status is required")
-    private String status;
+    private String statusApplication;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user; // Employee
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "apprenticeship_id")
     private Apprenticeship apprenticeship;
-
 
 
 }

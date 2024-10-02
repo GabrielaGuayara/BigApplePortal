@@ -26,17 +26,8 @@ public class ApplicationController {
     }
 
 
-    // Update the status of an application
-//    @PutMapping("/{applicationId}/newStatus")
-//    @PreAuthorize("hasAuthority('EMPLOYEE')")
-//    public ResponseEntity<Response> updateStatus(
-//            @PathVariable Long applicationId,
-//            @RequestBody String newStatus) {
-//        Response response = applicationService.updateApplicationStatus(applicationId, newStatus);
-//        return ResponseEntity.status(response.getStatusCode()).body(response);
-//    }
-
     @PutMapping("/{id}/status")
+    @PreAuthorize("hasAuthority('EMPLOYER')")
     public ResponseEntity<Response> updateApplicationStatus(@PathVariable Long id, @RequestBody StatusRequest request) {
         Response response = applicationService.updateApplicationStatus(id, request.getStatus());
         return ResponseEntity.ok(response);

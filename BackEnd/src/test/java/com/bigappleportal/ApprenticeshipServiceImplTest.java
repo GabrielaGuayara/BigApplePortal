@@ -1,3 +1,5 @@
+package com.bigappleportal;
+
 import com.bigappleportal.dto.ApprenticeshipDTO;
 import com.bigappleportal.dto.Response;
 import com.bigappleportal.model.Apprenticeship;
@@ -5,14 +7,12 @@ import com.bigappleportal.model.User;
 import com.bigappleportal.repositories.ApprenticeshipRepository;
 import com.bigappleportal.repositories.UserRepository;
 import com.bigappleportal.services.Impl.ApprenticeshipServiceImpl;
-import com.bigappleportal.utils.Utils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
