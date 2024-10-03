@@ -47,7 +47,7 @@ export default function ApprenticeshipSearch() {
   }, [searchTerm, filters, apprenticeships]);
 
   const boroughs = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island'];
-  const salaryRanges = ['$20 - $25 per hour', '$50,000 - $70,000', '$70,000 - $90,000', '$90,000+'];
+  const salaryRanges = ['$20 - $25 per hour', '$18 - $22 per hour', '$15 - $20 per hour'];
 
   //Function to hangle change on filters
  const handleFilterChange = (e) =>{

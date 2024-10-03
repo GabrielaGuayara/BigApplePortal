@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import ApiService from "../Service/ApiService";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login() {
   
@@ -10,7 +12,6 @@ function Login() {
     password:''
   })
   
-  const [error, setError] = useState('');
   const navigate = useNavigate();
 
 
@@ -42,18 +43,17 @@ function Login() {
         navigate('/home');
       }
     } catch (error) {
-      setError(error.message);
-      setTimeout(() => setError(''), 3000);
+        toast.error('Error fetching data', error)
     }
   };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-cream">
+       <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} />
+
       <div className="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
         <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">Login</h2>
-        
-        {error && <p className="bg-red text-white p-2 rounded mb-4">{error}</p>}
-
+    
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-gray-700 font-medium mb-2">Email:</label>

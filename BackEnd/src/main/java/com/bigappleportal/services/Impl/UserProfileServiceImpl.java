@@ -126,30 +126,6 @@ public class UserProfileServiceImpl implements IUserProfileService {
         return response;
     }
 
-//    @Override
-//    public Response suggestApprenticeships(Long userId) {
-//        Response response = new Response();
-//
-//        try {
-//            UserProfile userProfile = userProfileRepository.findByUserId(userId)
-//                    .orElseThrow(() -> new EntityNotFoundException("User profile not found"));
-//
-//            List<Apprenticeship> suggestedApprenticeships =apprenticeshipRepository
-//                    .findByCriteria(userProfile.getSkills(), userProfile.getInterests(), userProfile.getLocation());
-//
-//            response.setStatusCode(200);
-//            response.setMessage("Apprenticeship suggestions retrieved successfully");
-//            response.setApprenticeships(suggestedApprenticeships.stream()
-//                    .map(this::mapToDTO)
-//                    .collect(Collectors.toList()));
-//        } catch (Exception e) {
-//            response.setStatusCode(500);
-//            response.setMessage("Error retrieving apprenticeship suggestions: " + e.getMessage());
-//        }
-//
-//        return response;
-//    }
-
     private UserDTO mapToUserDTO(User user) {
         UserDTO userDTO = new UserDTO();
         userDTO.setId(user.getId());

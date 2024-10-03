@@ -26,7 +26,7 @@ const ApprenticeshipCard = ({ apprenticeship, onApply }) => {
           onClick={onApply}
           className="mt-4 w-full bg-blue hover:bg-indigo text-white font-semibold py-2 px-4 rounded-full transition-colors duration-300"
         >
-          Apply Now
+         See More Details
         </button>
       </div>
     </div>

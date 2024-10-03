@@ -10,7 +10,7 @@ const EmployerSidebar = ({ setActiveComponent }) => {
                 <li>
                     <button
                         onClick={() => setActiveComponent('addApprenticeship')}
-                        className="w-full text-left p-2 hover:bg-lightblue"
+                        className="w-full text-left p-2 hover:bg-gray rounded-lg"
                     >
                         Add New Apprenticeship
                     </button>
@@ -18,7 +18,7 @@ const EmployerSidebar = ({ setActiveComponent }) => {
                 <li>
                     <button
                         onClick={() => setActiveComponent('viewApprenticeships')}
-                        className="w-full text-left p-2 hover:bg-lightblue"
+                        className="w-full text-left p-2 hover:bg-gray rounded-lg"
                     >
                         View Posted Apprenticeship
                     </button>

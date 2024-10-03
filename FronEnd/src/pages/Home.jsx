@@ -52,7 +52,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className='bg-indigo py-16'>
+      <section className='bg-cerulean py-16'>
         <div className="container mx-auto px-4 text-center">
           <h2 className='text-3xl font-bold text-cream mb-6'>Kickstart your career today! </h2>
           <p className='text-xl text-white mb-12'>Create an acoount and start applying</p>

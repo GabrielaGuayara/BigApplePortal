@@ -20,6 +20,7 @@ import CreateUserProfile from "../components/employeeComponents/CreateProfile";
 import CreateProfile from "../components/employeeComponents/CreateProfile";
 import EditProfile from "../components/employeeComponents/EditProfile";
 import EditApprenticeship from "../components/EmployerComponents/EditApprenticeship";
+import ContactForm from "../pages/ContactForm";
 
 function Routes() {
   return (
@@ -32,6 +33,7 @@ function Routes() {
         <Route path="/login" element={<Login/>} />
         <Route path="/user-profile" element={<ProfilePage/>} />
         <Route path="/signup" element={<SignUp/>} />
+        <Route path="/contact" element={<ContactForm/>} />
 
 
         <Route path="/admin-dashboard" element={<AdminDashboard/>} />

@@ -21,29 +21,29 @@ const Navbar = () => {
 
   return (
     <nav className="bg-blue text-white p-4">
-      <div className="container mx-auto flex justify-between items-center flex-wrap">
-        <NavLink to="/" className="text-2xl font-bold">
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
+        <NavLink to="/" className="text-2xl font-bold mb-2 md:mb-0">
           <img src={Logo} alt="website logo" className="w-36" />
         </NavLink>
-        <div className="flex flex-wrap items-center space-x-4 mt-2">
+        <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
           <NavLink to="/home" className="hover:text-yellow transition-colors duration-200 flex items-center">
             <HomeIcon className="mr-1" size={18} />
             Home
           </NavLink>
          
-         {isEmployee &&
-          <NavLink to="/opportunities" className="hover:text-yellow transition-colors duration-200 flex items-center">
-            <Briefcase className="mr-1" size={18} />
-            Opportunities
-          </NavLink>
-          }
-         
-         {isEmployee &&
-          <NavLink to="/find-salaries" className="hover:text-yellow transition-colors duration-200 flex items-center">
-            <DollarSign className="mr-1" size={18} />
-            Find Salaries
-          </NavLink>
-        }
+          {isEmployee && (
+            <>
+              <NavLink to="/opportunities" className="hover:text-yellow transition-colors duration-200 flex items-center">
+                <Briefcase className="mr-1" size={18} />
+                Opportunities
+              </NavLink>
+              <NavLink to="/find-salaries" className="hover:text-yellow transition-colors duration-200 flex items-center">
+                <DollarSign className="mr-1" size={18} />
+                Find Salaries
+              </NavLink>
+            </>
+          )}
+          
           <NavLink to="/welcome-employers" className="hover:text-yellow transition-colors duration-200 flex items-center">
             <Building2 className="mr-1" size={18} />
             Employer Page
@@ -67,17 +67,20 @@ const Navbar = () => {
             </NavLink>
           )}
 
+            <NavLink to="/contact" className="hover:text-yellow transition-colors duration-200 flex items-center">
+               Contact
+              </NavLink>
           {!isAuthenticated && (
-            <NavLink to="/signup" className="hover:text-yellow transition-colors duration-200 flex items-center">
-              Sign Up
-            </NavLink>
-          )}
-
-          {!isAuthenticated && (
-            <NavLink to="/login" className="bg-yellow text-blue hover:bg-yellow-400 px-4 py-2 rounded transition-colors duration-200 flex items-center">
-              <LogIn className="mr-1" size={18} />
-              Login
-            </NavLink>
+            <>
+             
+              <NavLink to="/signup" className="hover:text-yellow transition-colors duration-200 flex items-center">
+                Sign Up
+              </NavLink>
+              <NavLink to="/login" className="bg-yellow text-blue hover:bg-yellow-400 px-4 py-2 rounded transition-colors duration-200 flex items-center">
+                <LogIn className="mr-1" size={18} />
+                Login
+              </NavLink>
+            </>
           )}
 
           {isAuthenticated && (

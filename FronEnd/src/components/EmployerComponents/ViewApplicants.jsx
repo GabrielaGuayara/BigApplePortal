@@ -132,7 +132,7 @@ export default function ViewApplicants() {
         {filteredApplications.length > 0 ? (
           <div className="space-y-6">
             {filteredApplications.map((application, index) => (
-              <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden border-2 border-blue-500">
+              <div key={index} className="bg-lightblue shadow-lg rounded-lg overflow-hidden border-2 border-blue-500">
                 <div className="bg-blue px-6 py-4">
                   <h2 className="text-2xl font-semibold text-white">{application.user.name}</h2>
                 </div>
@@ -158,7 +158,7 @@ export default function ViewApplicants() {
                     <select
                       onChange={(e) => updateApplicationStatus(application.id, e.target.value)}
                       value={application.status}
-                      className="mt-1 block bg-lightblue w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
+                      className="mt-1 block bg-indigo  text-white font-bold w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
                     >
                       <option value="PENDING">Pending</option>
                       <option value="ACCEPTED">Accepted</option>
@@ -167,7 +167,7 @@ export default function ViewApplicants() {
                   </div>
 
                   {profileData && viewingProfileId === application.user.id && showDetails && (
-                    <div className="mt-8 bg-gray shadow-lg rounded-lg p-6">
+                    <div className="mt-8 bg-white shadow-lg rounded-lg p-6">
                       <h2 className="text-xl font-bold text-blue mb-4">Employee information</h2>
                       <img className="w-40 rounded-xl" src={profileData.pictureURL} alt="Employee" />
                       <p><span className="font-semibold text-blue">Phone:</span> {profileData.phoneNumber}</p>

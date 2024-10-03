@@ -17,7 +17,7 @@ const FindSalaries =()=> {
 
   //Setting boroughs and salaries ranges that will be used for filtering
   const boroughs = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island']
-  const salaryRanges = ['$15 - $25', '$20 - $30', '$20 - $25']
+  const salaryRanges = ['$20 - $25 per hour', '$18 - $22 per hour', '$15 - $20 per hour']
 
   //This useEffect will run again everytime the search, selected borough and selectedSalaryRange change
   useEffect(() => {

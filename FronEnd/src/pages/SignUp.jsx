@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import ApiService from "../Service/ApiService";
 import { useNavigate, Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SignUp() {
 
@@ -14,10 +16,6 @@ function SignUp() {
         password: '',
         role: 'EMPLOYEE',
     });
-
-    //useState to manage the state of sucess or error messages
-    const [errorMessage, setErrorMessage] = useState('');
-    const [successMessage, setSuccessMessage] = useState('');
 
     //Funtion to handle changes in input field. Destructuring to get name and value
     const handleInputChange = (e) => {
@@ -38,25 +36,22 @@ function SignUp() {
                     password: '',
                     role: 'EMPLOYEE',
                 });
-                setSuccessMessage('User registered successfully');
+               toast.success('User registered successfully');
                 setTimeout(() => {
-                    setSuccessMessage('');
                     navigate('/login');
                 }, 2000);
             }
         } catch (error) {
-            setErrorMessage(error);
-            setTimeout(() => setErrorMessage(''), 5000);
+          toast.error("Error", error)
         }
     };
 
     return (
         //The sign up form will remder to get the user info
         <div className="flex justify-center items-center min-h-screen bg-cream p-4">
-            <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
-                {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-                {successMessage && <p className="text-indigo">{successMessage}</p>}
+            <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} />
 
+            <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
                 <h2 className="text-2xl font-semibold text-center text-indigo mb-6">Sign Up</h2>
                 
                 <form onSubmit={handleSubmit} className='bg-white'>
