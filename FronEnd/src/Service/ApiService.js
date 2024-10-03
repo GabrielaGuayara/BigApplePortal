@@ -10,7 +10,31 @@ export default class ApiService {
         };
     }
 
-    /** AUTH */
+    /** AUTHENTICATION CHECKER */
+    static logout() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('role');
+    }
+
+    static isAuthenticated() {
+        const token = localStorage.getItem('token');
+        return !!token;
+    }
+
+    static isAdmin() {
+        const role = localStorage.getItem('role');
+        return role === 'ADMIN';
+    }
+
+    static isEmployee() {
+        const role = localStorage.getItem('role');
+        return role === 'EMPLOYEE';
+    }
+
+    static isEmployer() {
+        const role = localStorage.getItem('role');
+        return role === 'EMPLOYER';
+    }
 
     // This registers a new user
     static async registerUser(registration) {
@@ -58,7 +82,7 @@ export default class ApiService {
         return data;
     }
 
-        // This registers a new user
+    // This code registers a new user
         static async registerAdmin(adminDetails) {
             try {console.log('Registration Data:', adminDetails); // Log the data being sent
         
@@ -171,25 +195,23 @@ export default class ApiService {
         const data = await response.json(); // Parse the JSON response
         return data;
     }
+// Method to get all users
+static async getAllUsers() {
+    const response = await fetch(`${this.BASE_URL}/users/all`, {
+        method: 'GET',
+        headers: this.getHeader(),
+    });
 
-    //APPRENTICESHIP
-  
-    //VIEW ALL USERS(EMPLOYEES AND EMPLOYERS)
-    // Method to get all users
-    static async getAllUsers() {
-        const response = await fetch(`${this.BASE_URL}/users/all`, {
-            method: 'GET',
-            headers: this.getHeader(),
-        });
-
-        if (!response.ok) {
-            throw new Error('Failed to fetch users');
-        }
-
-        const data = await response.json();
-        return data;
+    if (!response.ok) {
+        throw new Error('Failed to fetch users');
     }
 
+    const data = await response.json();
+    return data;
+}
+
+
+    //USER PROFILES
   
      static  async createUserProfile (userId, profileData) {
 
@@ -255,10 +277,6 @@ export default class ApiService {
 
 
    
-
-
-    //Get all apprenticeships for a specific user 
-   
     static async addApprenticeship(userId, apprenticeshipData) {
 
         console.log(userId);
@@ -277,6 +295,8 @@ export default class ApiService {
     
         return await response.json();
     }
+
+
     static async getAllApprenticeshipsByUser(userId)
 
      { 
@@ -287,8 +307,7 @@ export default class ApiService {
     }
 
     
-    
-    
+
     static async updateApprenticeship(apprenticeshipId, apprenticeshipData) {
         
         const userId = localStorage.getItem('id'); // Get userId from local storage
@@ -324,12 +343,7 @@ export default class ApiService {
     
 
 
-
-    // New method to get applications by user ID
-
     // APPLICATION METHODS
-
-
         static async applyForApprenticeship(userId, apprenticeshipId) {
             console.log(apprenticeshipId)
             const response = await fetch(`${this.BASE_URL}/applications/apply/${userId}/${apprenticeshipId}`, {
@@ -361,35 +375,6 @@ export default class ApiService {
 
 
    
-
-
-
-
-    /** AUTHENTICATION CHECKER */
-    static logout() {
-        localStorage.removeItem('token');
-        localStorage.removeItem('role');
-    }
-
-    static isAuthenticated() {
-        const token = localStorage.getItem('token');
-        return !!token;
-    }
-
-    static isAdmin() {
-        const role = localStorage.getItem('role');
-        return role === 'ADMIN';
-    }
-
-    static isEmployee() {
-        const role = localStorage.getItem('role');
-        return role === 'EMPLOYEE';
-    }
-
-    static isEmployer() {
-        const role = localStorage.getItem('role');
-        return role === 'EMPLOYER';
-    }
 }
 
 
