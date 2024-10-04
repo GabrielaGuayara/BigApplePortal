@@ -25,7 +25,7 @@ public class JWTUtils {
     //Constructor to initialize the JWT
     public JWTUtils() {
         //Base encoded secret key
-        String secreteString = "843567893696976453275974432697R634976R738467TR678T34865R6834R8763T478378637664538745673865783678548735687R3";
+        String secreteString = "72648391765489013246754823697R843756R932489TR548T76394R2837R7461T482763729109847652368947891236475846R5";
         //Decode the secret key into byte array
         byte[] keyBytes = Base64.getDecoder().decode(secreteString.getBytes(StandardCharsets.UTF_8));
         //Crate a secretkey object from the byte array

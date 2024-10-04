@@ -52,14 +52,14 @@ export default class ApiService {
     
     
             if (!response.ok) {
-                const errorData = await response.json(); // Get the error details from the response
+                const errorData = await response.json();
                 throw new Error( 'Failed to register');
             }
     
             const data =  await response.json()
             return data;
         } catch (error) {
-            console.error('Error during registration:', error); // Log the error
+            console.error('Error during registration:', error);
             throw new Error(error.message);
         }
     }
@@ -279,7 +279,8 @@ static async getAllUsers() {
    
     static async addApprenticeship(userId, apprenticeshipData) {
 
-        console.log(userId);
+        console.log('Apprenticeship Data:', apprenticeshipData); // Log the data being sent
+
         const response = await fetch(`${this.BASE_URL}/apprenticeships/post-apprenticeship/${userId}`, {
             method: 'POST',
             headers: {

@@ -43,26 +43,6 @@ public class UserController {
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 
-
-//    @PostMapping("/add-admin")
-//    @PreAuthorize("hasAuthority('ADMIN')")
-//    public ResponseEntity<Response> addAdmin(@RequestBody AdminRequest adminRequest) {
-//        try {
-//            Response response = userService.addAdmin(adminRequest);
-//            return ResponseEntity.status(response.getStatusCode()).body(response);
-//        } catch (Exception e) {
-//            Response response = new Response();
-//            response.setStatusCode(500);
-//            response.setMessage("Error occurred while adding admin: " + e.getMessage());
-//            return ResponseEntity.status(500).body(response);
-//        }
-
-//    @GetMapping("/personalInfo")
-//    public ResponseEntity<Response> getMyInfo(@RequestParam String email) {
-//        Response response = userService.getMyInfo(email);
-//        return ResponseEntity.status(response.getStatusCode()).body(response);
-//    }
-
     @GetMapping("/get-profile-info")
     public ResponseEntity<Response> getLoggedInUserProfile() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

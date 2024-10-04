@@ -44,8 +44,8 @@ const ViewPostedApprenticeships = () => {
         if (newStatus) {
             try {
                 await ApiService.updateApprenticeship(apprenticeshipId, { status: newStatus });
-                setApprenticeships(apprenticeships.map(app => 
-                    app.id === apprenticeshipId ? { ...app, status: newStatus } : app
+                setApprenticeships(apprenticeships.map(apprenticeship => 
+                    apprenticeship.id === apprenticeshipId ? { ...apprenticeship, status: newStatus } : apprenticeship
                 ));
             } catch (error) {
                 setError( error.message);

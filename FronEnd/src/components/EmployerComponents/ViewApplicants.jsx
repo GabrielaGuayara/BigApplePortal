@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from 'react'; 
 import { useParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const token = localStorage.getItem("token");
 
-export default function ViewApplicants() {
+  // State variables for managing applications and filters
+
+ const ViewApplicants = () => {
   const [dataApplications, setApplications] = useState([]);
   const [filteredApplications, setFilteredApplications] = useState([]);
   const [selectedDate, setSelectedDate] = useState('');
   const [profileData, setProfileData] = useState(null);
   const [viewingProfileId, setViewingProfileId] = useState(null);
-  const [showDetails, setShowDetails] = useState(false); // New state for toggling details
+  const [showDetails, setShowDetails] = useState(false);
   const { id } = useParams();
 
+
+    // Fetch applications when the component mounts or the ID changes
   useEffect(() => {
     const fetchApplicants = async () => {
       try {
@@ -37,8 +43,11 @@ export default function ViewApplicants() {
     fetchApplicants();
   }, [id]);
 
+
+   // Set applications data if available
   const handleDateFilter = (e) => {
     const date = e.target.value;
+    console.log(date)
     setSelectedDate(date);
     if (date) {
       const filtered = dataApplications.filter(app =>
@@ -50,6 +59,13 @@ export default function ViewApplicants() {
     }
   };
 
+  //Function to clear filters
+  const clearFilters = () => {
+    setSelectedDate('');
+    setFilteredApplications(dataApplications);
+  };
+
+  //Function to fetch data about user-profile
   const viewEmployeeProfile = async (userId) => {
     try {
       const response = await fetch(`http://localhost:8080/user-profile/view/${userId}`, {
@@ -91,9 +107,9 @@ export default function ViewApplicants() {
         );
         setApplications(updatedApplications);
         setFilteredApplications(updatedApplications);
-        console.log("Application status updated successfully");
+        toast.success("Application status updated successfully");
       } else {
-        console.error(data.message || 'Error updating application status');
+        toast.error( 'Error updating application status');
       }
     } catch (error) {
       console.error("Error updating application status:", error);
@@ -102,10 +118,8 @@ export default function ViewApplicants() {
 
   const toggleDetails = (userId) => {
     if (viewingProfileId === userId) {
-      // If the details are already being shown for this user, hide them
       setShowDetails(!showDetails);
     } else {
-      // Show details for the new user
       setViewingProfileId(userId);
       setShowDetails(true);
       viewEmployeeProfile(userId);
@@ -114,6 +128,8 @@ export default function ViewApplicants() {
 
   return (
     <div className="min-h-screen bg-cream py-8 px-4 sm:px-6 lg:px-8">
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
+
       <div className="max-w-6xl mx-auto">
         <h1 className="text-3xl font-bold text-blue mb-8 text-center">Application Details</h1>
 
@@ -124,6 +140,12 @@ export default function ViewApplicants() {
             onChange={handleDateFilter}
             className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
+          <button 
+            onClick={clearFilters} 
+            className="ml-4 bg-red text-white py-2 px-4 rounded hover:bg-red-600 focus:outline-none"
+          >
+            Clear Filters
+          </button>
           <p className="text-gray-600">
             Showing {filteredApplications.length} of {dataApplications.length} applications
           </p>
@@ -148,7 +170,7 @@ export default function ViewApplicants() {
                   </p>
 
                   <button
-                    onClick={() => toggleDetails(application.user.id)} // Toggle details with the same button
+                    onClick={() => toggleDetails(application.user.id)} 
                     className="mt-4 bg-blue text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
                   >
                     {viewingProfileId === application.user.id && showDetails ? 'Hide Details' : 'View More Details'}
@@ -158,7 +180,7 @@ export default function ViewApplicants() {
                     <select
                       onChange={(e) => updateApplicationStatus(application.id, e.target.value)}
                       value={application.status}
-                      className="mt-1 block bg-indigo  text-white font-bold w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
+                      className="mt-1 block bg-indigo text-white font-bold w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
                     >
                       <option value="PENDING">Pending</option>
                       <option value="ACCEPTED">Accepted</option>
@@ -187,3 +209,5 @@ export default function ViewApplicants() {
     </div>
   );
 }
+
+export default ViewApplicants;

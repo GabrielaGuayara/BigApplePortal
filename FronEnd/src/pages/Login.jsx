@@ -39,11 +39,14 @@ function Login() {
         localStorage.setItem('id', response.id);
         localStorage.setItem('name', response.name);
 
+        console.log(response)
         //If the login is succesful. Redirect user to home page
         navigate('/home');
       }
+      
     } catch (error) {
-        toast.error('Error fetching data', error)
+       toast.error(error.message)
+
     }
   };
 

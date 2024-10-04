@@ -37,14 +37,20 @@ export default function ApprenticeshipSearch() {
   }, []);
 
   //UseEffect to filter apprenticeships based on seach and selected criteria
-  useEffect(() => {
-    const filtered = apprenticeships.filter(apprenticeship => 
-      apprenticeship.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (filters.selectedBorough === '' || apprenticeship.location === filters.selectedBorough) &&
-      (filters.selectedSalaryRange === '' || apprenticeship.salaryRange === filters.selectedSalaryRange)
-    );
-    setFilteredApprenticeships(filtered);
-  }, [searchTerm, filters, apprenticeships]);
+    useEffect(() => {
+      const filtered = apprenticeships.filter(apprenticeship => {
+        // Check if title exists
+        const titleExists = apprenticeship.title && typeof apprenticeship.title === 'string';
+        
+        return titleExists &&
+          titleExists &&
+          apprenticeship.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+          (filters.selectedBorough === '' || apprenticeship.location === filters.selectedBorough) &&
+          (filters.selectedSalaryRange === '' || apprenticeship.salaryRange === filters.selectedSalaryRange);
+      });
+      
+      setFilteredApprenticeships(filtered);
+    }, [searchTerm, filters, apprenticeships]);
 
   const boroughs = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island'];
   const salaryRanges = ['$20 - $25 per hour', '$18 - $22 per hour', '$15 - $20 per hour'];

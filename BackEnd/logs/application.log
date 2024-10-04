@@ -1,39 +1,233 @@
-2024-10-02 21:14:38 - Starting BigApplePortalApplication using Java 22.0.2 with PID 13568 (C:\Users\gabriela.guayara\Desktop\BAPortal\BackEnd\target\classes started by gabriela.guayara in C:\Users\gabriela.guayara\Desktop\BAPortal\BackEnd)
-2024-10-02 21:14:38 - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-10-02 21:14:38 - No active profile set, falling back to 1 default profile: "default"
-2024-10-02 21:14:38 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-10-02 21:14:38 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-10-02 21:14:40 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-10-02 21:14:40 - Finished Spring Data repository scanning in 76 ms. Found 4 JPA repository interfaces.
-2024-10-02 21:14:41 - Tomcat initialized with port 8080 (http)
-2024-10-02 21:14:41 - Starting service [Tomcat]
-2024-10-02 21:14:41 - Starting Servlet engine: [Apache Tomcat/10.1.28]
-2024-10-02 21:14:41 - Initializing Spring embedded WebApplicationContext
-2024-10-02 21:14:41 - Root WebApplicationContext: initialization completed in 2396 ms
-2024-10-02 21:14:41 - HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-10-02 21:14:41 - HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-10-02 21:14:41 - HHH000026: Second-level cache disabled
-2024-10-02 21:14:42 - No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-10-02 21:14:42 - HikariPool-1 - Starting...
-2024-10-02 21:14:42 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@18236e22
-2024-10-02 21:14:42 - HikariPool-1 - Start completed.
-2024-10-02 21:14:43 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-10-02 21:14:43 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-10-02 21:14:44 - Filter 'JWTAuthFilter' configured for use
-2024-10-02 21:14:44 - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
-2024-10-02 21:14:44 - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
-2024-10-02 21:14:44 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-10-02 21:14:45 - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
-2024-10-02 21:14:45 - LiveReload server is running on port 35729
-2024-10-02 21:14:45 - Tomcat started on port 8080 (http) with context path '/'
-2024-10-02 21:14:45 - Started BigApplePortalApplication in 7.15 seconds (process running for 7.942)
-2024-10-02 22:08:12 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-10-02 22:08:12 - Initializing Servlet 'dispatcherServlet'
-2024-10-02 22:08:12 - Completed initialization in 3 ms
-2024-10-02 22:08:13 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
-org.springframework.security.core.userdetails.UsernameNotFoundException: Email not found: admin2@gmail.com
-	at com.bigappleportal.services.CustomUserDetailsService.loadUserByUsername(CustomUserDetailsService.java:26)
-	at com.bigappleportal.security.JWTAuthFilter.doFilterInternal(JWTAuthFilter.java:53)
+2024-10-03 09:40:50 - Starting BigApplePortalApplication using Java 22.0.2 with PID 28808 (C:\Users\gabriela.guayara\Desktop\BAPortal\BackEnd\target\classes started by gabriela.guayara in C:\Users\gabriela.guayara\Desktop\BAPortal\BackEnd)
+2024-10-03 09:40:50 - Running with Spring Boot v3.3.3, Spring v6.1.12
+2024-10-03 09:40:50 - No active profile set, falling back to 1 default profile: "default"
+2024-10-03 09:40:51 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-10-03 09:40:51 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-10-03 09:40:53 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-03 09:40:53 - Finished Spring Data repository scanning in 110 ms. Found 4 JPA repository interfaces.
+2024-10-03 09:40:54 - Starting BigApplePortalApplication using Java 22.0.2 with PID 26736 (C:\Users\gabriela.guayara\Desktop\BAPortal\BackEnd\target\classes started by gabriela.guayara in C:\Users\gabriela.guayara\Desktop\BAPortal\BackEnd)
+2024-10-03 09:40:54 - Running with Spring Boot v3.3.3, Spring v6.1.12
+2024-10-03 09:40:54 - No active profile set, falling back to 1 default profile: "default"
+2024-10-03 09:40:54 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-10-03 09:40:54 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-10-03 09:40:54 - Tomcat initialized with port 8080 (http)
+2024-10-03 09:40:54 - Starting service [Tomcat]
+2024-10-03 09:40:54 - Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-10-03 09:40:54 - Initializing Spring embedded WebApplicationContext
+2024-10-03 09:40:54 - Root WebApplicationContext: initialization completed in 3721 ms
+2024-10-03 09:40:55 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-03 09:40:55 - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-10-03 09:40:55 - HHH000026: Second-level cache disabled
+2024-10-03 09:40:55 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-03 09:40:55 - HikariPool-1 - Starting...
+2024-10-03 09:40:56 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-03 09:40:56 - Finished Spring Data repository scanning in 72 ms. Found 4 JPA repository interfaces.
+2024-10-03 09:40:56 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@788ebe1c
+2024-10-03 09:40:56 - HikariPool-1 - Start completed.
+2024-10-03 09:40:57 - Tomcat initialized with port 8080 (http)
+2024-10-03 09:40:57 - Starting service [Tomcat]
+2024-10-03 09:40:57 - Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-10-03 09:40:57 - Initializing Spring embedded WebApplicationContext
+2024-10-03 09:40:57 - Root WebApplicationContext: initialization completed in 2782 ms
+2024-10-03 09:40:57 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-03 09:40:57 - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-10-03 09:40:57 - HHH000026: Second-level cache disabled
+2024-10-03 09:40:58 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-03 09:40:58 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-03 09:40:58 - HikariPool-1 - Starting...
+2024-10-03 09:40:58 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-03 09:40:58 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@31d5098b
+2024-10-03 09:40:58 - HikariPool-1 - Start completed.
+2024-10-03 09:40:58 - Filter 'JWTAuthFilter' configured for use
+2024-10-03 09:40:58 - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-10-03 09:40:58 - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-10-03 09:40:59 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-03 09:40:59 - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-10-03 09:40:59 - LiveReload server is running on port 35729
+2024-10-03 09:41:00 - Tomcat started on port 8080 (http) with context path '/'
+2024-10-03 09:41:00 - Started BigApplePortalApplication in 9.889 seconds (process running for 10.729)
+2024-10-03 09:41:00 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-03 09:41:00 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-03 09:41:00 - Filter 'JWTAuthFilter' configured for use
+2024-10-03 09:41:00 - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-10-03 09:41:00 - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-10-03 09:41:00 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-03 09:41:01 - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-10-03 09:41:01 - Unable to start LiveReload server
+2024-10-03 09:41:01 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-10-03 09:41:01 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-03 09:41:01 - HikariPool-1 - Shutdown initiated...
+2024-10-03 09:41:01 - HikariPool-1 - Shutdown completed.
+2024-10-03 09:41:01 - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-10-03 09:41:01 - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2024-10-03 09:41:19 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-03 09:41:19 - HikariPool-1 - Shutdown initiated...
+2024-10-03 09:41:19 - HikariPool-1 - Shutdown completed.
+2024-10-03 09:41:27 - Starting BigApplePortalApplication using Java 22.0.2 with PID 22164 (C:\Users\gabriela.guayara\Desktop\BAPortal\BackEnd\target\classes started by gabriela.guayara in C:\Users\gabriela.guayara\Desktop\BAPortal\BackEnd)
+2024-10-03 09:41:27 - Running with Spring Boot v3.3.3, Spring v6.1.12
+2024-10-03 09:41:27 - No active profile set, falling back to 1 default profile: "default"
+2024-10-03 09:41:27 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-10-03 09:41:27 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-10-03 09:41:27 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-03 09:41:28 - Finished Spring Data repository scanning in 57 ms. Found 4 JPA repository interfaces.
+2024-10-03 09:41:28 - Tomcat initialized with port 8080 (http)
+2024-10-03 09:41:28 - Starting service [Tomcat]
+2024-10-03 09:41:28 - Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-10-03 09:41:28 - Initializing Spring embedded WebApplicationContext
+2024-10-03 09:41:28 - Root WebApplicationContext: initialization completed in 1638 ms
+2024-10-03 09:41:28 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-03 09:41:29 - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-10-03 09:41:29 - HHH000026: Second-level cache disabled
+2024-10-03 09:41:29 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-03 09:41:29 - HikariPool-1 - Starting...
+2024-10-03 09:41:29 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4694c236
+2024-10-03 09:41:29 - HikariPool-1 - Start completed.
+2024-10-03 09:41:30 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-03 09:41:30 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-03 09:41:30 - Filter 'JWTAuthFilter' configured for use
+2024-10-03 09:41:31 - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-10-03 09:41:31 - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-10-03 09:41:31 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-03 09:41:31 - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-10-03 09:41:31 - LiveReload server is running on port 35729
+2024-10-03 09:41:31 - Tomcat started on port 8080 (http) with context path '/'
+2024-10-03 09:41:31 - Started BigApplePortalApplication in 5.311 seconds (process running for 5.883)
+2024-10-03 09:46:28 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m59s48ms133µs100ns).
+2024-10-03 09:54:22 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-03 09:54:22 - Initializing Servlet 'dispatcherServlet'
+2024-10-03 09:54:22 - Completed initialization in 0 ms
+2024-10-03 10:18:43 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=18m14s516ms763µs700ns).
+2024-10-03 10:19:14 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-03 10:19:14 - HikariPool-1 - Shutdown initiated...
+2024-10-03 10:19:14 - HikariPool-1 - Shutdown completed.
+2024-10-03 18:23:40 - Starting BigApplePortalApplication using Java 22.0.2 with PID 36844 (C:\Users\gabriela.guayara\Desktop\BAPortal\BackEnd\target\classes started by gabriela.guayara in C:\Users\gabriela.guayara\Desktop\BAPortal\BackEnd)
+2024-10-03 18:23:40 - Running with Spring Boot v3.3.3, Spring v6.1.12
+2024-10-03 18:23:40 - No active profile set, falling back to 1 default profile: "default"
+2024-10-03 18:23:40 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-10-03 18:23:40 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-10-03 18:23:41 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-03 18:23:42 - Finished Spring Data repository scanning in 122 ms. Found 4 JPA repository interfaces.
+2024-10-03 18:23:42 - Tomcat initialized with port 8080 (http)
+2024-10-03 18:23:42 - Starting service [Tomcat]
+2024-10-03 18:23:42 - Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-10-03 18:23:43 - Initializing Spring embedded WebApplicationContext
+2024-10-03 18:23:43 - Root WebApplicationContext: initialization completed in 2731 ms
+2024-10-03 18:23:43 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-03 18:23:43 - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-10-03 18:23:43 - HHH000026: Second-level cache disabled
+2024-10-03 18:23:43 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-03 18:23:43 - HikariPool-1 - Starting...
+2024-10-03 18:23:44 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2979fe4
+2024-10-03 18:23:44 - HikariPool-1 - Start completed.
+2024-10-03 18:23:45 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-03 18:23:45 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-03 18:23:46 - Filter 'JWTAuthFilter' configured for use
+2024-10-03 18:23:46 - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-10-03 18:23:46 - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-10-03 18:23:46 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-03 18:23:47 - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-10-03 18:23:47 - LiveReload server is running on port 35729
+2024-10-03 18:23:47 - Tomcat started on port 8080 (http) with context path '/'
+2024-10-03 18:23:47 - Started BigApplePortalApplication in 8.062 seconds (process running for 16.925)
+2024-10-03 18:24:05 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-03 18:24:05 - Initializing Servlet 'dispatcherServlet'
+2024-10-03 18:24:05 - Completed initialization in 0 ms
+2024-10-03 19:19:07 - Resolved [org.springframework.security.authorization.AuthorizationDeniedException: Access Denied]
+2024-10-03 19:19:42 - Resolved [org.springframework.security.authorization.AuthorizationDeniedException: Access Denied]
+2024-10-03 19:27:17 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-03 19:27:17 - HikariPool-1 - Shutdown initiated...
+2024-10-03 19:27:17 - HikariPool-1 - Shutdown completed.
+2024-10-03 19:27:44 - Starting BigApplePortalApplication using Java 22.0.2 with PID 31600 (C:\Users\gabriela.guayara\Desktop\BAPortal\BackEnd\target\classes started by gabriela.guayara in C:\Users\gabriela.guayara\Desktop\BAPortal\BackEnd)
+2024-10-03 19:27:44 - Running with Spring Boot v3.3.3, Spring v6.1.12
+2024-10-03 19:27:44 - No active profile set, falling back to 1 default profile: "default"
+2024-10-03 19:27:44 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-10-03 19:27:44 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-10-03 19:27:46 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-03 19:27:46 - Finished Spring Data repository scanning in 126 ms. Found 4 JPA repository interfaces.
+2024-10-03 19:27:47 - Tomcat initialized with port 8080 (http)
+2024-10-03 19:27:47 - Starting service [Tomcat]
+2024-10-03 19:27:47 - Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-10-03 19:27:47 - Initializing Spring embedded WebApplicationContext
+2024-10-03 19:27:47 - Root WebApplicationContext: initialization completed in 2829 ms
+2024-10-03 19:27:47 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-03 19:27:47 - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-10-03 19:27:47 - HHH000026: Second-level cache disabled
+2024-10-03 19:27:48 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-03 19:27:48 - HikariPool-1 - Starting...
+2024-10-03 19:27:48 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@35eb42
+2024-10-03 19:27:48 - HikariPool-1 - Start completed.
+2024-10-03 19:27:50 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-03 19:27:50 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-03 19:27:51 - Filter 'JWTAuthFilter' configured for use
+2024-10-03 19:27:51 - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-10-03 19:27:51 - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-10-03 19:27:51 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-03 19:27:52 - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-10-03 19:27:52 - LiveReload server is running on port 35729
+2024-10-03 19:27:52 - Tomcat started on port 8080 (http) with context path '/'
+2024-10-03 19:27:52 - Started BigApplePortalApplication in 8.559 seconds (process running for 10.212)
+2024-10-03 19:28:20 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-03 19:28:20 - HikariPool-1 - Shutdown initiated...
+2024-10-03 19:28:20 - HikariPool-1 - Shutdown completed.
+2024-10-03 19:28:38 - Starting BigApplePortalApplication using Java 22.0.2 with PID 24676 (C:\Users\gabriela.guayara\Desktop\BAPortal\BackEnd\target\classes started by gabriela.guayara in C:\Users\gabriela.guayara\Desktop\BAPortal\BackEnd)
+2024-10-03 19:28:38 - Running with Spring Boot v3.3.3, Spring v6.1.12
+2024-10-03 19:28:38 - No active profile set, falling back to 1 default profile: "default"
+2024-10-03 19:28:38 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-10-03 19:28:38 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-10-03 19:28:40 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-03 19:28:40 - Finished Spring Data repository scanning in 78 ms. Found 4 JPA repository interfaces.
+2024-10-03 19:28:41 - Tomcat initialized with port 8080 (http)
+2024-10-03 19:28:41 - Starting service [Tomcat]
+2024-10-03 19:28:41 - Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-10-03 19:28:41 - Initializing Spring embedded WebApplicationContext
+2024-10-03 19:28:41 - Root WebApplicationContext: initialization completed in 2228 ms
+2024-10-03 19:28:41 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-03 19:28:41 - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-10-03 19:28:41 - HHH000026: Second-level cache disabled
+2024-10-03 19:28:41 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-03 19:28:42 - HikariPool-1 - Starting...
+2024-10-03 19:28:42 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@26a4b713
+2024-10-03 19:28:42 - HikariPool-1 - Start completed.
+2024-10-03 19:28:43 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-03 19:28:43 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-03 19:28:44 - Filter 'JWTAuthFilter' configured for use
+2024-10-03 19:28:44 - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-10-03 19:28:44 - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-10-03 19:28:44 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-03 19:28:45 - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-10-03 19:28:45 - LiveReload server is running on port 35729
+2024-10-03 19:28:45 - Tomcat started on port 8080 (http) with context path '/'
+2024-10-03 19:28:45 - Started BigApplePortalApplication in 7.101 seconds (process running for 7.775)
+2024-10-03 19:30:26 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-03 19:30:26 - Initializing Servlet 'dispatcherServlet'
+2024-10-03 19:30:26 - Completed initialization in 0 ms
+2024-10-03 19:34:47 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+io.jsonwebtoken.MalformedJwtException: Invalid compact JWT string: Compact JWSs must contain exactly 2 period characters, and compact JWEs must contain exactly 4.  Found: 0
+	at io.jsonwebtoken.impl.JwtTokenizer.tokenize(JwtTokenizer.java:102)
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:372)
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:364)
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94)
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:36)
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:29)
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseSignedClaims(DefaultJwtParser.java:830)
+	at com.bigappleportal.utils.JWTUtils.extractClaims(JWTUtils.java:53)
+	at com.bigappleportal.utils.JWTUtils.extractUsername(JWTUtils.java:48)
+	at com.bigappleportal.security.JWTAuthFilter.doFilterInternal(JWTAuthFilter.java:48)
 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
 	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
 	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
@@ -94,6 +288,146 @@ org.springframework.security.core.userdetails.UsernameNotFoundException: Email n
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1570)
-2024-10-02 23:23:01 - Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-10-02 23:23:01 - HikariPool-1 - Shutdown initiated...
-2024-10-02 23:23:01 - HikariPool-1 - Shutdown completed.
+2024-10-03 19:34:54 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+io.jsonwebtoken.MalformedJwtException: Invalid compact JWT string: Compact JWSs must contain exactly 2 period characters, and compact JWEs must contain exactly 4.  Found: 0
+	at io.jsonwebtoken.impl.JwtTokenizer.tokenize(JwtTokenizer.java:102)
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:372)
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:364)
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94)
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:36)
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:29)
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseSignedClaims(DefaultJwtParser.java:830)
+	at com.bigappleportal.utils.JWTUtils.extractClaims(JWTUtils.java:53)
+	at com.bigappleportal.utils.JWTUtils.extractUsername(JWTUtils.java:48)
+	at com.bigappleportal.security.JWTAuthFilter.doFilterInternal(JWTAuthFilter.java:48)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+2024-10-03 19:40:56 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-03 19:40:56 - HikariPool-1 - Shutdown initiated...
+2024-10-03 19:40:56 - HikariPool-1 - Shutdown completed.
+2024-10-03 19:41:05 - Starting BigApplePortalApplication using Java 22.0.2 with PID 18028 (C:\Users\gabriela.guayara\Desktop\BAPortal\BackEnd\target\classes started by gabriela.guayara in C:\Users\gabriela.guayara\Desktop\BAPortal\BackEnd)
+2024-10-03 19:41:05 - Running with Spring Boot v3.3.3, Spring v6.1.12
+2024-10-03 19:41:05 - No active profile set, falling back to 1 default profile: "default"
+2024-10-03 19:41:05 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-10-03 19:41:05 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-10-03 19:41:06 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-03 19:41:06 - Finished Spring Data repository scanning in 64 ms. Found 4 JPA repository interfaces.
+2024-10-03 19:41:07 - Tomcat initialized with port 8080 (http)
+2024-10-03 19:41:07 - Starting service [Tomcat]
+2024-10-03 19:41:07 - Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-10-03 19:41:07 - Initializing Spring embedded WebApplicationContext
+2024-10-03 19:41:07 - Root WebApplicationContext: initialization completed in 2125 ms
+2024-10-03 19:41:07 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-03 19:41:07 - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-10-03 19:41:07 - HHH000026: Second-level cache disabled
+2024-10-03 19:41:07 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-03 19:41:07 - HikariPool-1 - Starting...
+2024-10-03 19:41:08 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@a455a4
+2024-10-03 19:41:08 - HikariPool-1 - Start completed.
+2024-10-03 19:41:09 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-03 19:43:54 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-03 19:43:54 - Filter 'JWTAuthFilter' configured for use
+2024-10-03 19:43:55 - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-10-03 19:43:55 - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-10-03 19:43:55 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-03 19:43:55 - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-10-03 19:43:56 - LiveReload server is running on port 35729
+2024-10-03 19:43:56 - Tomcat started on port 8080 (http) with context path '/'
+2024-10-03 19:43:56 - Started BigApplePortalApplication in 171.743 seconds (process running for 172.893)
+2024-10-03 19:46:02 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-03 19:46:02 - Initializing Servlet 'dispatcherServlet'
+2024-10-03 19:46:02 - Completed initialization in 0 ms
+2024-10-03 19:56:05 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m26s680ms44µs200ns).
+2024-10-03 19:56:54 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-03 19:56:54 - HikariPool-1 - Shutdown initiated...
+2024-10-03 19:56:54 - HikariPool-1 - Shutdown completed.
+2024-10-03 20:28:12 - Starting BigApplePortalApplication using Java 22.0.2 with PID 31660 (C:\Users\gabriela.guayara\Desktop\BAPortal\BackEnd\target\classes started by gabriela.guayara in C:\Users\gabriela.guayara\Desktop\BAPortal\BackEnd)
+2024-10-03 20:28:12 - Running with Spring Boot v3.3.3, Spring v6.1.12
+2024-10-03 20:28:12 - No active profile set, falling back to 1 default profile: "default"
+2024-10-03 20:28:12 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-10-03 20:28:12 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-10-03 20:28:13 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-03 20:28:13 - Finished Spring Data repository scanning in 57 ms. Found 4 JPA repository interfaces.
+2024-10-03 20:28:14 - Tomcat initialized with port 8080 (http)
+2024-10-03 20:28:14 - Starting service [Tomcat]
+2024-10-03 20:28:14 - Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-10-03 20:28:14 - Initializing Spring embedded WebApplicationContext
+2024-10-03 20:28:14 - Root WebApplicationContext: initialization completed in 2238 ms
+2024-10-03 20:28:14 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-03 20:28:14 - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-10-03 20:28:14 - HHH000026: Second-level cache disabled
+2024-10-03 20:28:15 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-03 20:28:15 - HikariPool-1 - Starting...
+2024-10-03 20:28:15 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1ea019c1
+2024-10-03 20:28:15 - HikariPool-1 - Start completed.
+2024-10-03 20:28:16 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-03 20:28:16 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-03 20:28:16 - Filter 'JWTAuthFilter' configured for use
+2024-10-03 20:28:17 - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-10-03 20:28:17 - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-10-03 20:28:17 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-03 20:28:17 - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-10-03 20:28:17 - LiveReload server is running on port 35729
+2024-10-03 20:28:18 - Tomcat started on port 8080 (http) with context path '/'
+2024-10-03 20:28:18 - Started BigApplePortalApplication in 6.457 seconds (process running for 7.216)
+2024-10-03 20:31:16 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-03 20:31:16 - HikariPool-1 - Shutdown initiated...
+2024-10-03 20:31:16 - HikariPool-1 - Shutdown completed.

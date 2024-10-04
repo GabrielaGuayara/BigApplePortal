@@ -40,7 +40,6 @@ public class SecurityConfig {
                 .authorizeHttpRequests(request -> request
                         //This make endpoints accessible for user registration and login
                         .requestMatchers("/auth/**").permitAll()
-
                         // Any other request needs authentication
                         .anyRequest().authenticated())
 

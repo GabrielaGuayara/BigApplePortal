@@ -117,3 +117,15 @@ TheThe Big Apple Portal is a full-stack web application that allows Employers to
 ## Figma
 The design and prototy for this project can be found in the following link: [Clickhere](
 https://www.figma.com/design/fkTUF3r4S8fUO8nIBZJxGK/TheBigApplePortal?node-id=1-3&t=CYnIifOR9ahQiyJZ-1)
+
+## Areas for Improvement in Project Implementation
+# Implementation of NoSQL Database for Resume Storage:
+Transition to a NoSQL database architecture presents an opportunity to enhance the efficiency and scalability of storing and retrieving resume PDF files. This approach allows for flexible data modeling, accommodating various formats and unstructured data. 
+
+
+# Dynamic Dashboard Enhancement:
+Create a more interactive and user-centric dashboard, it is essential to implement dynamic elements that adapt to user interactions and data inputs. Utilizing front-end frameworks like React can significantly improve the user experience by allowing for real-time updates and customizable views
+
+# Notification System for Application Tracking:
+Implement a push notification system or email alerts can enhance user engagement and satisfaction. By integrating this feature with the existing database and analytics components, users can receive timely updates, thereby streamlining their application management process.
+

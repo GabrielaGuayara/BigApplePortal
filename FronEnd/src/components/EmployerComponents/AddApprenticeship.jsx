@@ -9,8 +9,8 @@ const AddApprenticeship = () => {
     //Holds all input values in a single formData object
     const [formData, setFormData] = useState({
         title: '',
-        location: '',
         company: '',
+        location: '',
         description: '',
         apprenticeshipType: '',
         salaryRange: '',
